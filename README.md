@@ -1,6 +1,8 @@
-# vue-fineuploader
+# vue-fineuploader@
 
 [![Build Status](https://travis-ci.org/Elhebert/vue-fineuploader.svg?branch=master)](https://travis-ci.org/Elhebert/vue-fineuploader)
+[![Dependency Status](https://david-dm.org/Elhebert/vue-fineuploader.svg)](https://david-dm.org/Elhebert/vue-fineuploader@)
+[![devDependency Status](https://david-dm.org/Elhebert/vue-fineuploader/dev-status.svg)](https://david-dm.org/Elhebert/vue-fineuploader@?type=dev)
 
 A VueJS 2 Component for Fine Uploader.
 
@@ -29,13 +31,14 @@ git clone https://github.com/Elhebert/vue-fineuploader.git
 - `callbacks`: Object containing the different callbacks to execute when events are triggers.
 
     See the official Fine Uploader documentation [for detailed information about the different events](http://docs.fineuploader.com/branch/master/api/events.html)
+
 ### Example
 
 ```js
 <template>
     <div>
-        <FineUplaoder :options="options" :callbacks="callbacks" :dropzone="dropzone">
-            <button class="browse"></button>
+        <FineUplaoder :options="options" :callbacks="callbacks">
+            <div class="browse"></div>
         </FineUplaoder>
     </div>
 </template>

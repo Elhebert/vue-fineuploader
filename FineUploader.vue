@@ -23,7 +23,7 @@
     },
 
     mounted() {
-      const fineUploaderBasicInstance = new qq.FineUploaderBasic({
+      qq.FineUploaderBasic({
         ...this.options,
         callbacks: this.callbacks,
       });
