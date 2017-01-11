@@ -69,7 +69,7 @@ For example, to listen to the `onAllComplete` callback, you need to listen to th
 
 <script language="text/babel">
 import FineUplaoder from './path/to/FineUploader.vue'; // If you copied the component into your project
-import FineUploader from 'FineUploader'; // If you used npm to install the component
+import FineUploader from 'vue-fineuploader'; // If you used npm to install the component
 
 export default {
     data() {
