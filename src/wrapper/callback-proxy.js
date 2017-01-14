@@ -70,7 +70,7 @@ const executeThenableCallbacks = ({ registeredCallbacks, originalCallbackArgumen
   return Promise.resolve()
 }
 
-const executeThenableCallback = ({ registeredCallbacks, originalCallbackArguments}) => {
+const executeThenableCallback = ({ registeredCallbacks, originalCallbackArguments }) => {
   return new Promise((resolve, reject) => {
     const callback = registeredCallbacks.pop()
 

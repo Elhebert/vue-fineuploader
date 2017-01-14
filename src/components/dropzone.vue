@@ -1,6 +1,6 @@
 <template>
-  <div :class="{{ fine-uploader-dropzone-container }}" ref="dropZone">
-      {{ this.children }}
+  <div class="fine-uploader-dropzone-container" ref="dropZone">
+      <slot></slot>
   </div>
 </template>
 
@@ -11,7 +11,6 @@
 
   export default {
     props: {
-      children: { type: Node },
       dropActiveClassName: { type: String, default: 'vue-fine-uploader-dropzone-active' },
       element: { type: String },
       multiple: { type: Boolean },
@@ -21,41 +20,41 @@
       uploader: { type: Object, required: true }
     },
 
-    mounted() {
+    mounted () {
       this._registerDropzone()
-    }
+    },
 
-    updated() {
+    updated () {
       this._registerDropzone()
-    }
+    },
 
-    beforeDestroy() {
+    beforeDestroy () {
       this._qqDropzone && this._qqDropzone.dispose()
-    }
+    },
 
     methods: {
-      _onDropError(errorCode, errorData) {
+      _onDropError (errorCode, errorData) {
         console.error(errorCode, errorData)
 
         this.onDropError && this.onDropError(errorCode, errorData)
       },
 
-      _onProcessingDroppedFilesComplete(files) {
+      _onProcessingDroppedFilesComplete (files) {
         this.uploader.methods.addFiles(files)
 
-        this.onProcessingDroppedFilesComplete) && this.onProcessingDroppedFilesComplete(files)
+        this.onProcessingDroppedFilesComplete && this.onProcessingDroppedFilesComplete(files)
       },
 
-      _registerDropzone() {
+      _registerDropzone () {
         this._qqDropzone && this._qqDropzone.dispose()
 
-        const dropzoneEl = this.element || this.refs.dropZone
+        const dropzoneEl = this.element || this.$refs.dropZone
 
         this._qqDropzone = new qq.DragAndDrop({
           allowMultipleItems: !!this.multiple,
           callbacks: {
             dropError: this._onDropError.bind(this),
-            processingDroppedFiles: this.onProcessingDroppedFiles || function() {},
+            processingDroppedFiles: this.onProcessingDroppedFiles || function () {},
             processingDroppedFilesComplete: this._onProcessingDroppedFilesComplete.bind(this)
           },
           classes: {
