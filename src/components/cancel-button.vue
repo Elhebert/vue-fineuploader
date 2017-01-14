@@ -25,7 +25,7 @@
     props: {
       id: {
         type: Number,
-        require: true
+        required: true
       },
       onlyRenderIfCancelable: {
         type: Boolean,
@@ -33,7 +33,7 @@
       },
       uploader: {
         type: Object,
-        require: true
+        required: true
       }
     },
 

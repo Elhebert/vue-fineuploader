@@ -21,15 +21,15 @@
     props: {
       id: {
         type: Number,
-        require: true
+        required: true
       },
       onlyRenderIfDeletable: {
         type: Boolean,
-        default: true
+        defaultd: true
       },
       uploader: {
         type: Object,
-        require: true
+        required: true
       }
     },
 

@@ -11,13 +11,25 @@
 
   export default {
     props: {
-      dropActiveClassName: { type: String, default: 'vue-fine-uploader-dropzone-active' },
-      element: { type: String },
-      multiple: { type: Boolean },
-      onDropError: { type: Function },
-      onProcessingDroppedFiles: { type: Function },
-      onProcessingDroppedFilesComplete: { type: Function },
-      uploader: { type: Object, required: true }
+      dropActiveClassName: {
+        type: String,
+        default: 'vue-fine-uploader-dropzone-active'
+      },
+      multiple: {
+        type: Boolean
+      },
+      onDropError: {
+        type: Function
+      },
+      onProcessingDroppedFiles: {
+        type: Function
+      },
+      onProcessingDroppedFilesComplete: {
+        type: Function
+      },
+      uploader: {
+        type: Object, required: true
+      }
     },
 
     mounted () {

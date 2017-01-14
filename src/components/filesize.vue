@@ -16,6 +16,8 @@
 <style lang="css"></style>
 
 <script>
+  import isPlainObject from 'lodash.isplainobject'
+
   const formatSizeAndUnits = ({ size, units }) => {
     let formattedSize
     let formattedUnits
@@ -40,15 +42,15 @@
     return { formattedSize, formattedUnits }
   }
 
-const areUnitsEqual = (units1, units2) => {
-  const keys1 = Object.keys(units1)
+  const areUnitsEqual = (units1, units2) => {
+    const keys1 = Object.keys(units1)
 
-  if (keys1.length === Object.keys(units2).length) {
-    return keys1.every(key1 => units1[key1] === units2[key1])
+    if (keys1.length === Object.keys(units2).length) {
+      return keys1.every(key1 => units1[key1] === units2[key1])
+    }
+
+    return false
   }
-
-  return false
-}
 
   export default {
     props: {
@@ -71,6 +73,7 @@ const areUnitsEqual = (units1, units2) => {
             return false
           }
 
+          const keys = Object.keys(obj)
           const valueKeys = Object.keys(value)
 
           return valueKeys.every((key) => {
@@ -91,7 +94,7 @@ const areUnitsEqual = (units1, units2) => {
       },
       uploader: {
         type: Object,
-        required: true,
+        required: true
       }
     },
 
@@ -99,12 +102,15 @@ const areUnitsEqual = (units1, units2) => {
       return {
         state: {
           size: this.uploader.methods.getSize(this.id)
-        }
+        },
+        formattedSize: {},
+        formattedUnits: {}
       }
     },
 
     created () {
       const scalingOption = this.uploader.options.scaling
+
       if (scalingOption && scalingOption.sizes.length) {
         // If this is a scaled image, the size won't be known until upload time.
         this._onUploadHandler = id => {
@@ -115,6 +121,9 @@ const areUnitsEqual = (units1, units2) => {
           }
         }
       }
+
+      this.formattedSize = formatSizeAndUnits({ size: this.state.size, units: this.units }).formattedSize
+      this.formattedUnits = formatSizeAndUnits({ size: this.state.size, units: this.units }).formattedUnits
     },
 
     mounted () {
