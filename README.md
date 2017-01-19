@@ -6,6 +6,19 @@
 
 A VueJS 2 Component for Fine Uploader's core.
 
+## New Version In Progress
+
+I'm refactoring the `vue-uploader` component to be more customisable and to use all the options that fineuploader offer.
+You can see the **WIP** here [vue-fineuploader/feature/refactor](https://github.com/Elhebert/vue-fineuploader/tree/feature/refactor). This new version is based on the react components (https://github.com/FineUploader/react-fine-uploader).
+
+It'll offer a wrapper for each endpoints of fineuploader, and a component for all the UI options (dropzone, fileinput, cancel-button, ...).
+
+Be sure to check it out, and help in anyway you can, porting a component or the documenation, everyone can help !
+
+ETA: end of January.
+
+---
+
 For the drag'n'drop supported version see: [https://github.com/Elhebert/vue-fineuploader-dropzone](https://github.com/Elhebert/vue-fineuploader-dropzone)
 
 ## Usage
