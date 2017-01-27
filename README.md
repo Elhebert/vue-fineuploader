@@ -706,7 +706,25 @@ You may pass _any_ standard [`<button>` attributes](https://developer.mozilla.or
 
 #### `<progress-bar />`
 
-Not implemented yet
+The ProgressBar component allows for a per-file _or_ a total progress bar to be rendered and automatically updated
+by the underlying upload wrapper instance. This covers the per-file and total progress bar elements found in Fine Uploader UI. This progress bar itself is made up of a container element and a child element that marks the file progress.
+
+##### Properties
+
+- `id` - If this is a per-file progress bar, specify the ID of the file to monitor. For a total progress bar, omit this
+property.
+
+- `hideBeforeStart` - Defaults to `true`, which ensures the progress bar is not visible until the associated file has
+started uploading. For total progress bars, this stays hidden until at least one file has started uploading.
+
+- `hideOnComplete` - Defaults to `true`, which ensures the progress bar is no longer visible once the associated file
+has completed uploading. For total progress bars, the bar is hidden once _all_ files have completed uploading.
+
+- `uploader` - The only required option - a Fine Uploader [wrapper class](#wrapper-classes).
+
+Consider embedding a per-file `<progress-bar />`, such as `<progress-bar :id="3" :uploader="uploader" />`, alongside
+a [`<thumbnail />` component](#thumbnail) for the same file. A total progress bar - `<progress-bar :uploader="uploader" />` - should probably be included before the container element that holds all file
+`<thumbnail />` elements, such as at the top of a [`<dropzone />`](#dropzone).
 
 #### `<retry-button />`
 
