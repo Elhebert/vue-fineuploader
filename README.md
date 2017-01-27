@@ -313,7 +313,7 @@ The example below will include a cancel button for each submitted file along wit
     },
 
     mounted() {
-      uploader.on('statusChange', (id, oldStatus, newStatus) => {
+      this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
         if (newStatus === 'submitted') {
           const submittedFiles = this.state.submittedFiles
 
@@ -406,7 +406,7 @@ The example below will include a delete button for each submitted file along wit
     },
 
     mounted() {
-      uploader.on('statusChange', (id, oldStatus, newStatus) => {
+      this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
         if (newStatus === 'submitted') {
           const submittedFiles = this.state.submittedFiles
 
@@ -509,8 +509,47 @@ Suppose you wanted to render a filename for each file as new files are submitted
 
 Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
 
-```javascript
-// TODO
+```html
+<template>
+  <filename v-for="file in state.submittedFiles" :id="file.id" :uploader="uploader" />
+</template>
+
+<script>
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import Filename from 'vue-fineuploader/components/filename'
+
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+            request: {
+              endpoint: 'my/upload/endpoint'
+            }
+        }
+      })
+
+      return {
+        state: {
+            submittedFiles: []
+        },
+        uploader
+      }
+    },
+
+    component: {
+      Filename
+    },
+
+    mounted () {
+      this.uploader.on('submitted', id => {
+        const submittedFiles = this.state.submittedFiles
+
+        submittedFiles.push(id)
+        this.$set(this.state, 'submittedFiles', submittedFiles)
+      })
+    }
+  }
+</script>
 ```
 
 #### `<filesize />`
@@ -536,8 +575,47 @@ Suppose you wanted to render a file size for each file as new files are submitte
 
 Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
 
-```javascript
-// TODO
+```html
+<template>
+  <filesize v-for="file in state.submittedFiles" :id="file.id" :uploader="uploader" />
+</template>
+
+<script>
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import Filesize from 'vue-fineuploader/components/filesize'
+
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+            request: {
+              endpoint: 'my/upload/endpoint'
+            }
+        }
+      })
+
+      return {
+        state: {
+            submittedFiles: []
+        },
+        uploader
+      }
+    },
+
+    components: {
+      Filesize
+    },
+
+    mounted () {
+      this.uploader.on('submitted', id => {
+        const submittedFiles = this.state.submittedFiles
+
+        submittedFiles.push(id)
+        this.$set(this.state, 'submittedFiles', submittedFiles)
+      })
+    }
+  }
+</script>
 ```
 
 If you wanted to display units as "bytes", "kilobytes", etc (instead of the default text), your `FileSize`
@@ -576,8 +654,52 @@ When a file can be paused, the word "Pause" will appear in the button if no `pau
 
 The example below will include a pause/resume button for each submitted file along with a [`<thumbnail />`](#thumbnail-).
 
-```javascript
-// TODO
+```html
+<template>
+  <div v-for="file in state.submittedFiles">
+      <Thumbnail :id="file.id" :uploader="uploader" />
+      <PauseResumeButton :id="file.id" :uploader="uploader" />
+  </div>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'react-fine-uploader'
+  import PauseResumeButton from 'react-fine-uploader/components/PauseResume-button'
+  import Thumbnail from 'react-fine-uploader/components/thumbnail'
+
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+            request: {
+              endpoint: 'my/upload/endpoint'
+            }
+        }
+      })
+
+      return {
+        state: {
+            submittedFiles: []
+        },
+        uploader
+      }
+    },
+
+    components: {
+      PauseResumeButton,
+      Thumbnail
+    },
+
+    mounted () {
+      this.uploader.on('submitted', id => {
+        const submittedFiles = this.state.submittedFiles
+
+        submittedFiles.push(id)
+        this.$set(this.state, 'submittedFiles', submittedFiles)
+      })
+    }
+  }
+</script>
 ```
 
 You may pass _any_ standard [`<button>` attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) (or any standard element attributes, such as `data-` attributes) to the `<PauseResumeButton />` as well. These attributes will be attached to the underlying `<button>` element.
