@@ -18,12 +18,12 @@ Makes using [Fine Uploader](http://fineuploader.com) in a VueJS 2 app simple. Dr
 
 Vue Fine Uploader makes using Fine Uploader and all of its unique features very simple in a Vue-based project. Thie library provides useful resources that can be divided into three sections:
 
-#### Individual focused components (like `<Thumbnail>` and `<ProgressBar>`).
+#### Individual focused components (like `<thumbnail>` and `<progress-bar>`).
 
 These allow you to easily build a highly customizable and powerful UI for your upload widget, backed by Fine Uploader's core feature set. Most of these components are unstyled (i.e. ready to be styled by you). Focused component-specific stylesheets may be provided at a later date.
 
 
-#### Higher-order components (like `<Gallery>`)
+#### Higher-order components (like `<gallery>`)
 
 These combine many focused components that provide style (which can be adjusted via your own stylesheet) and enhanced UI-specific features. These components are essentially "turn-key", which means that you can get a fully functional upload widget up and running in your project with a few lines of code. Keep in mind that you of course still need a server to handle the requests sent by Fine Uploader and to server up the JavaScript and CSS files.
 
@@ -39,19 +39,19 @@ These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide a
    - [S3](#s3) - upload files to directly to an Amazon Simple Storage Service (S3) bucket. Your server must sign requests using a private key.
    - [Traditional](#traditional) - upload files to a server you created and control.
 - [High-level Components](#high-level-components)
-   - [`<gallery />`](#gallery-)
+   - [`<gallery />`](#gallery)
 - [Low-level Components](#low-level-components)
-   - [`<cancel-button />`](#cancelbutton-)
-   - [`<delete-button />`](#deletebutton-)
-   - [`<dropzone />`](#dropzone-)
-   - [`<file-input />`](#fileinput-)
-   - [`<filename />`](#filename-)
-   - [`<filesize />`](#filesize-)
-   - [`<pause-resume-button />`](#pauseresumebutton-)
-   - [`<progress-bar />`](#progressbar-)
-   - [`<retr-button />`](#retrybutton-)
-   - [`<status />`](#status-)
-   - [`<thumbnail />`](#thumbnail-)
+   - [`<cancel-button />`](#cancel-button)
+   - [`<delete-button />`](#delete-button)
+   - [`<dropzone />`](#dropzone)
+   - [`<file-input />`](#file-input)
+   - [`<filename />`](#filename)
+   - [`<filesize />`](#filesize)
+   - [`<pause-resume-button />`](#pause-resume-button)
+   - [`<progress-bar />`](#progress-bar)
+   - [`<retry-button />`](#retry-button)
+   - [`<status />`](#status)
+   - [`<thumbnail />`](#thumbnail)
 
 ### Installing
 
