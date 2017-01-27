@@ -3,7 +3,7 @@
     class="vue-fine-uploader-cancel-button" }
     :disabled="!this.state.cancelable"
     :onClick="this.state.cancelable && this._onClick">
-      <slot></slot>
+      <slot>Cancel</slot>
   </button>
 </template>
 

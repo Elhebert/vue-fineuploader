@@ -3,7 +3,7 @@
           class="vue-fine-uploader-delete-button"
           disabled="!this.state.deletable || this.state.deleting"
           @Click="this.state.deletable && !this.state.deleting && this._onClick">
-      <slot></slot>
+      <slot>Delete</slot>
   </button>
 </template>
 

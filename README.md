@@ -39,19 +39,19 @@ These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide a
    - [S3](#s3) - upload files to directly to an Amazon Simple Storage Service (S3) bucket. Your server must sign requests using a private key.
    - [Traditional](#traditional) - upload files to a server you created and control.
 - [High-level Components](#high-level-components)
-   - [`<Gallery />`](#gallery-)
+   - [`<gallery />`](#gallery-)
 - [Low-level Components](#low-level-components)
-   - [`<CancelButton />`](#cancelbutton-)
+   - [`<cancel-button />`](#cancelbutton-)
    - [`<delete-button />`](#deletebutton-)
    - [`<dropzone />`](#dropzone-)
-   - [`<FileInput />`](#fileinput-)
-   - [`<Filename />`](#filename-)
-   - [`<Filesize />`](#filesize-)
-   - [`<PauseResumeButton />`](#pauseresumebutton-)
-   - [`<ProgressBar />`](#progressbar-)
-   - [`<RetryButton />`](#retrybutton-)
-   - [`<Status />`](#status-)
-   - [`<Thumbnail />`](#thumbnail-)
+   - [`<file-input />`](#fileinput-)
+   - [`<filename />`](#filename-)
+   - [`<filesize />`](#filesize-)
+   - [`<pause-resume-button />`](#pauseresumebutton-)
+   - [`<progress-bar />`](#progressbar-)
+   - [`<retr-button />`](#retrybutton-)
+   - [`<status />`](#status-)
+   - [`<thumbnail />`](#thumbnail-)
 
 ### Installing
 
@@ -250,7 +250,7 @@ uploader.methods.deleteFile(3)
 
 ### High-level Components
 
-#### `<Gallery />`
+#### `<gallery />`
 
 Not implemented yet.
 
@@ -261,6 +261,10 @@ Not implemented yet.
 The `<cancel-button />` component allows you to easily render a useable cancel button for a submitted file. An file can be "canceled" at any time, except after it has uploaded successfully, and before it has passed validation (and of course after it has already been canceled).
 
 By default, the `<cancel-button />` will be rendered and clickable only when the associated file is eligible for cancelation. Otherwise, the component will _not_ render a button. In other words, once, for example, the associated file has been canceled or has uploaded successfully, the button will essentially disappear. You can change this behavior by setting appropriate options.
+
+##### Slots
+
+- *unamed*: child elements/components of `<cancel-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Cancel".
 
 ##### Properties
 
@@ -345,6 +349,11 @@ You may pass _any_ standard [`<button>` attributes](https://developer.mozilla.or
 The `<delete-button />` component allows you to easily render a useable delete button for an uploaded file. An file can be deleted from the server if the option has been enabled and if the file has already uploaded successfully.
 
 By default, the `<delete-button />` will be rendered and clickable only when the associated file is eligible for deletion. Otherwise, the component will _not_ render a button. In other words, once, for example, the associated file has been deleted, or while it is still uploading, the button will not be visible. You can change this behavior by setting appropriate options.
+
+##### Slots
+
+- *unamed*: child elements/components of `<delete-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Delete".
+
 
 ##### Properties
 
@@ -552,6 +561,11 @@ The `<pause-resume-button />` component allows you to easily render a useable pa
 
 When a file can be paused, the word "Pause" will appear in the button if no `pauseChildren` property has been specified. When it can be resumed, the button will be changed to "Resume" if no `resumeChildren` property has been defined. The former case will pause the upload on click, and the latter will resume. If the file cannot be paused or resumed, by default, the button will not be rendered.
 
+##### Slots
+
+- `pause`: child elements/components of `<pause-resume-button>`. Use this for any text of graphics that you would like to display inside the rendered pause button. If the component is childless, the button will be rendered with a simple text node of "Pause".
+- `resume`: child elements/components of `<pause-resume-button>`. Use this for any text of graphics that you would like to display inside the rendered pause button. If the component is childless, the button will be rendered with a simple text node of "Resume".
+
 ##### Properties
 
 - `id` - The Fine Uploader ID of the submitted file. (required)
@@ -568,18 +582,18 @@ The example below will include a pause/resume button for each submitted file alo
 
 You may pass _any_ standard [`<button>` attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) (or any standard element attributes, such as `data-` attributes) to the `<PauseResumeButton />` as well. These attributes will be attached to the underlying `<button>` element.
 
-#### `<ProgressBar />`
+#### `<progress-bar />`
 
 Not implemented yet
 
-#### `<RetryButton />`
+#### `<retry-button />`
 
 Not implemented yet
 
-#### `<Status />`
+#### `<status />`
 
 Not implemented yet
 
-#### `<Thumbnail />`
+#### `<thumbnail />`
 
 Not implemented yet
