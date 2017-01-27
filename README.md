@@ -19,7 +19,6 @@ ETA: end of January.
 
 ---
 
-For the drag'n'drop supported version see: [https://github.com/Elhebert/vue-fineuploader-dropzone](https://github.com/Elhebert/vue-fineuploader-dropzone)
 
 ## Usage
 
