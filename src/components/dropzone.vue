@@ -1,10 +1,10 @@
 <template>
   <div class="fine-uploader-dropzone-container" ref="dropZone">
-      <slot></slot>
+      <slot ref="emement"></slot>
   </div>
 </template>
 
-<style></style>
+<style lang="css"></style>
 
 <script>
   import qq from 'fine-uploader/lib/dnd'
@@ -60,7 +60,7 @@
       _registerDropzone () {
         this._qqDropzone && this._qqDropzone.dispose()
 
-        const dropzoneEl = this.element || this.$refs.dropZone
+        const dropzoneEl = this.$refs.element || this.$refs.dropZone
 
         this._qqDropzone = new qq.DragAndDrop({
           allowMultipleItems: !!this.multiple,

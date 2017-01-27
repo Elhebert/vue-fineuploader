@@ -4,6 +4,8 @@
   </span>
 </template>
 
+<style lang="css"></style>
+
 <script>
   export default {
     props: {
@@ -39,9 +41,7 @@
           oldSetName.call(this.uploader.methods, id, newName)
 
           if (id === this.id) {
-            this.setState({
-              filename: newName
-            })
+            this.$set(this.state, 'filename', newName)
           }
         }
       }

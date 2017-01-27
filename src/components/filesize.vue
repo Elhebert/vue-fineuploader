@@ -115,9 +115,7 @@
         // If this is a scaled image, the size won't be known until upload time.
         this._onUploadHandler = id => {
           if (id === this.id) {
-            this.setState({
-              size: this.uploader.methods.getSize(id)
-            })
+            this.$set(this.state, 'size', this.uploader.methods.getSize(id))
           }
         }
       }

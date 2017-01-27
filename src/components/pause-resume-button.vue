@@ -9,6 +9,8 @@
   </button>
 </template>
 
+<style lang="css"></style>
+
 <script>
   export default {
     props: {
@@ -72,11 +74,14 @@
           const resumable = !pausable && this.isResumable(newStatus)
 
           if (!pausable && this.state.pausable) {
-            this.setState({ pausable, resumable })
+            this.$set(this.state, 'pausable', pausable)
+            this.$set(this.state, 'resumable', resumable)
           } else if (resumable && !this.state.resumable) {
-            this.setState({ pausable, resumable })
+            this.$set(this.state, 'pausable', pausable)
+            this.$set(this.state, 'resumable', resumable)
           } else if (!resumable && this.state.resumable) {
-            this.setState({ pausable, resumable })
+            this.$set(this.state, 'pausable', pausable)
+            this.$set(this.state, 'resumable', resumable)
           } else if (newStatus === 'deleted' || newStatus === 'canceled' || newStatus === 'upload successful') {
             this._unregisterStatusChangeHandler()
             this._unregisterOnUploadChunkHandler()
@@ -95,15 +100,11 @@
       _onUploadChunk (id, name, chunkData) {
         if (id === this.id && !this._unmounted) {
           if (chunkData.partIndex > 0 && !this.state.pausable) {
-            this.setState({
-              pausable: true,
-              resumable: false
-            })
+            this.$set(this.state, 'pausable', true)
+            this.$set(this.state, 'resumable', false)
           } else if (chunkData.partIndex === 0 && this.state.pausable) {
-            this.setState({
-              pausable: false,
-              resumable: false
-            })
+            this.$set(this.state, 'pausable', false)
+            this.$set(this.state, 'resumable', false)
           }
         }
       },
@@ -122,5 +123,3 @@
     }
   }
 </script>
-
-<style></style>

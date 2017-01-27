@@ -7,6 +7,8 @@
   </button>
 </template>
 
+<style lang="css"></style>
+
 <script>
   const isCancelable = status => {
     return [
@@ -58,9 +60,9 @@
       _onStatusChange: (id, oldStatus, newStatus) => {
         if (id === this.id && !this._unmounted) {
           if (!isCancelable(newStatus) && this.state.cancelable) {
-            this.setState({ cancelable: false })
+            this.$set(this.state, 'cancelable', false)
           } else if (isCancelable(newStatus) && !this.state.cancelable) {
-            this.setState({ cancelable: true })
+            this.$set(this.state, 'cancelable', true)
           } else if (newStatus === 'deleted' || newStatus === 'canceled') {
             this._unregisterStatusChangeHandler()
           }

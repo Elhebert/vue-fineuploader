@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "VueJS 2 components for using Fine Uploader in a Vue based project.",
   "homepage": "https://github.com/Elhebert/vue-fineuploader#readme",
-    "repository": {
+  "repository": {
     "url": "https://github.com/Elhebert/vue-fineuploader.git",
     "type": "git"
   },

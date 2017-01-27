@@ -1,8 +1,8 @@
 <template>
   <button aria-label='delete'
           class="vue-fine-uploader-delete-button"
-          disabled="!this.state.deletable || this.state.deleting"
-          @Click="this.state.deletable && !this.state.deleting && this._onClick">
+          disabled="!state.deletable || state.deleting"
+          @click="state.deletable && !state.deleting && _onClick">
       <slot>Delete</slot>
   </button>
 </template>
@@ -42,7 +42,7 @@
       }
     },
 
-    moutned () {
+    mounted () {
       this.uploader.on('statusChange', this._onStatusChange)
     },
 
@@ -55,18 +55,14 @@
       _onStatusChange: (id, oldStatus, newStatus) => {
         if (id === this.id && !this._unmounted) {
           if (!isDeletable(newStatus) && newStatus !== 'deleting' && this.state.deletable) {
-            !this._unmounted && this.setState({
-              deletable: false,
-              deleting: false
-            })
+            !this._unmounted && this.$set(this.state, 'deletable', false)
+            !this._unmounted && this.$set(this.state, 'deleting', false)
             this._unregisterStatusChangeHandler()
           } else if (isDeletable(newStatus) && !this.state.deletable) {
-            this.setState({
-              deletable: true,
-              deleting: false
-            })
+            this.$set(this.state, 'deletable', true)
+            this.$set(this.state, 'deleting', false)
           } else if (newStatus === 'deleting' && !this.state.deleting) {
-            this.setState({ deleting: true })
+            this.$set(this.state, 'deleting', false)
           }
         }
       },
