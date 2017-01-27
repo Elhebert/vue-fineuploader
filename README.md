@@ -657,8 +657,8 @@ The example below will include a pause/resume button for each submitted file alo
 ```html
 <template>
   <div v-for="file in state.submittedFiles">
-      <Thumbnail :id="file.id" :uploader="uploader" />
-      <PauseResumeButton :id="file.id" :uploader="uploader" />
+      <thumbnail :id="file.id" :uploader="uploader" />
+      <pause-resume-button :id="file.id" :uploader="uploader" />
   </div>
 </template>
 
