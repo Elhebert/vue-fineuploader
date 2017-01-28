@@ -671,15 +671,15 @@ The example below will include a pause/resume button for each submitted file alo
     data () {
       const uploader = new FineUploader({
         options: {
-            request: {
-              endpoint: 'my/upload/endpoint'
-            }
+          request: {
+            endpoint: 'my/upload/endpoint'
+          }
         }
       })
 
       return {
         state: {
-            submittedFiles: []
+          submittedFiles: []
         },
         uploader
       }
@@ -759,40 +759,40 @@ The example below will include a retry button for each submitted file along with
   import RetryButton from 'vue-fineuploader/components/retry-button'
   import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
-export default {
-  data () {
-    const uploader = new FineUploader({
-      options: {
-        request: {
-          endpoint: 'my/upload/endpoint'
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+          request: {
+            endpoint: 'my/upload/endpoint'
+          }
         }
-      }
-    })
+      })
 
-    return {
-      state: {
-        submittedFiles: []
-      },
-      uploader
+      return {
+        state: {
+          submittedFiles: []
+        },
+        uploader
+      }
+    },
+
+    components: {
+      RetryButton,
+      Thumbnail
+    },
+
+    mounted() {
+      this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
+        if (newStatus === 'submitted') {
+          const submittedFiles = this.state.submittedFiles
+
+          submittedFiles.push(id)
+          this.$set(this.state, 'submittedFiles', submittedFiles)
+        }
+      })
     }
-  },
-
-  components: {
-    RetryButton,
-    Thumbnail
-  },
-
-  mounted() {
-    this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
-      if (newStatus === 'submitted') {
-        const submittedFiles = this.state.submittedFiles
-
-        submittedFiles.push(id)
-        this.$set(this.state, 'submittedFiles', submittedFiles)
-      }
-    })
   }
-}
 </script>
 ```
 
@@ -800,7 +800,75 @@ You may pass _any_ standard [`<button>` attributes](https://developer.mozilla.or
 
 #### `<status />`
 
-Not implemented yet
+The `<status />` component renders the current status of a file in a format appropriate for display. You may also override one or more default display values.
+
+##### Properties
+
+- `id` - The Fine Uploader ID of the submitted file. (required)
+
+- `text` - An object containing a map of status keys to display values. You may override one or more of these entries. Each entry with default values is listed below.
+   - `deleting` - 'Deleting...'
+   - `paused` - 'Paused'
+   - `queued` - 'Queued'
+   - `retrying_upload` - 'Retrying...'
+   - `submitting` - 'Submitting...'
+   - `uploading` - 'Uploading...'
+   - `upload_failed` - 'Failed'
+   - `upload_successful` - 'Completed'
+
+- `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
+
+Below, the current status of each file is rendered underneath its thumbnail. As the status changes, so does the rendered text. The display value for the `upload_success` status has also been overridden to display as "Success!"
+
+Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
+
+```html
+<template>
+  <div v-for="file in state.submittedFiles">
+    <thumbnail :id="file.id" :text="{ upload_successful: 'Success!' }" :uploader="uploader" />
+    <status :id="file.id" :uploader="uploader" />
+  </div>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import Status from 'vue-fineuploader/components/retry-button'
+  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+          request: {
+            endpoint: 'my/upload/endpoint'
+          }
+        }
+      })
+
+      return {
+        state: {
+          submittedFiles: []
+        },
+        uploader
+      }
+    },
+
+    components: {
+      Status,
+      Thumbnail
+    },
+
+    mounted () {
+      this.uploader.on('submitted', id => {
+        const submittedFiles = this.state.submittedFiles
+
+        submittedFiles.push(id)
+        this.$set(this.state, 'submittedFiles', submittedFiles)
+      })
+    }
+  }
+</script>
+```
 
 #### `<thumbnail />`
 
