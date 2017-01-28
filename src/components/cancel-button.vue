@@ -1,8 +1,9 @@
 <template>
-  <button aria-label="cancel"
-    class="vue-fine-uploader-cancel-button" }
-    :disabled="!this.state.cancelable"
-    :onClick="this.state.cancelable && this._onClick">
+  <button v-if="onlyRenderIfCancelable || state.cancelable"
+          aria-label="cancel"
+          class="vue-fine-uploader-cancel-button"
+          :disabled="!state.cancelable"
+          :onClick="state.cancelable && _onClick">
       <slot>Cancel</slot>
   </button>
 </template>
@@ -23,7 +24,6 @@
   }
 
   export default {
-
     props: {
       id: {
         type: Number,
@@ -43,7 +43,8 @@
       return {
         state: {
           cancelable: true
-        }
+        },
+        _unmounted: false
       }
     },
 

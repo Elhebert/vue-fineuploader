@@ -53,8 +53,7 @@
     mounted () {
       if (this._isTotalProgress) {
         this.uploader.on('totalProgress', this._trackProgressEventHandler)
-      }
-      else {
+      } else {
         this.uploader.on('progress', this._trackProgressEventHandler)
       }
 
@@ -83,10 +82,11 @@
         this._trackStatusEventHandler = (id, oldStatus, newStatus) => {
           if (!this._unmounted) {
             if (this._isTotalProgress) {
-              if (!this.state.hidden
-                && this.hideOnComplete
-                && isUploadComplete(newStatus)
-                && !this.uploader.methods.getInProgress()
+              if (
+                !this.state.hidden &&
+                this.hideOnComplete &&
+                isUploadComplete(newStatus) &&
+                !this.uploader.methods.getInProgress()
               ) {
                 this.$set(this.state, 'hidden', true)
               } else if (this.state.hidden && this.uploader.methods.getInProgress()) {
@@ -106,8 +106,7 @@
       _unregisterEventHandlers () {
         if (this._isTotalProgress) {
           this.uploader.off('totalProgress', this._trackProgressEventHandler)
-        }
-        else {
+        } else {
           this.uploader.off('progress', this._trackProgressEventHandler)
         }
 

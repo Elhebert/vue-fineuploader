@@ -1,8 +1,9 @@
 <template>
-  <button :aria-label="buttonLabel"
+  <button v-if="state.pausable || state.resumable || !onlyRenderIfEnabled"
+          :aria-label="buttonLabel"
           class="vue-fine-uploader-pause-resume-button"
           :class="buttonClassName"
-          :disabled="!this.state.pausable && !this.state.resumable"
+          :disabled="!state.pausable && !state.resumable"
           @click="_onClick">
       <slot v-if="resumable" name="resume">Resume</slot>
       <slot v-else name="pause">Pause</slot>

@@ -1,5 +1,6 @@
 <template>
-  <button aria-label='delete'
+  <button v-if="onlyRenderIfDeletable || state.deletable"
+          aria-label='delete'
           class="vue-fine-uploader-delete-button"
           disabled="!state.deletable || state.deleting"
           @click="state.deletable && !state.deleting && _onClick">
@@ -38,7 +39,8 @@
         state: {
           deletable: false,
           deleting: false
-        }
+        },
+        _unmounted: false
       }
     },
 
