@@ -264,7 +264,7 @@ By default, the `<cancel-button />` will be rendered and clickable only when the
 
 ##### Slots
 
-- *unamed*: child elements/components of `<cancel-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Cancel".
+- *unamed* - child elements/components of `<cancel-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Cancel".
 
 ##### Properties
 
@@ -352,7 +352,7 @@ By default, the `<delete-button />` will be rendered and clickable only when the
 
 ##### Slots
 
-- *unamed*: child elements/components of `<delete-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Delete".
+- *unamed* - child elements/components of `<delete-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Delete".
 
 
 ##### Properties
@@ -641,8 +641,8 @@ When a file can be paused, the word "Pause" will appear in the button if no `pau
 
 ##### Slots
 
-- `pause`: child elements/components of `<pause-resume-button>`. Use this for any text of graphics that you would like to display inside the rendered pause button. If the component is childless, the button will be rendered with a simple text node of "Pause".
-- `resume`: child elements/components of `<pause-resume-button>`. Use this for any text of graphics that you would like to display inside the rendered pause button. If the component is childless, the button will be rendered with a simple text node of "Resume".
+- `pause` - child elements/components of `<pause-resume-button>`. Use this for any text of graphics that you would like to display inside the rendered pause button. If the component is childless, the button will be rendered with a simple text node of "Pause".
+- `resume` - child elements/components of `<pause-resume-button>`. Use this for any text of graphics that you would like to display inside the rendered pause button. If the component is childless, the button will be rendered with a simple text node of "Resume".
 
 ##### Properties
 
@@ -728,7 +728,75 @@ a [`<thumbnail />` component](#thumbnail-) for the same file. A total progress b
 
 #### `<retry-button />`
 
-Not implemented yet
+The `<retry-button />` component allows you to easily render a useable retry button for a submitted file. An file can be "retried" manually after all auto retries have been exhausted on an upload failed _and_ if the [server has not forbidden retries in the upload response](http://docs.fineuploader.com/branch/master/api/options.html#retry.preventRetryResponseProperty).
+
+By default, the `<retry-button />` will be rendered and clickable only when the associated file is eligible to be manually retried. Otherwise, the component will _not_ render a button. In other words, once, for example, the associated file has been canceled or has uploaded successfully, the button will essentially disappear. You can change this behavior by setting appropriate options
+
+##### Slots
+
+- *unamed* - child elements/components of `<retry-button>`. Use this for any text of graphics that you would like to display inside the rendered button. If the component is childless, the button will be rendered with a simple text node of "Retry".
+
+##### Properties
+
+- `id` - The Fine Uploader ID of the submitted file. (required)
+
+- `onlyRenderIfRetryable` - Defaults to `true`. If set to `false`, the element will be rendered as a disabled button if the associated file is not retryable.
+
+- `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
+
+The example below will include a retry button for each submitted file along with a [`<thumbnail />`](#thumbnail-).
+
+```html
+<template>
+  <div v-for="file in state.submittedFiles">
+    <thumbnail :id="file.id" :uploader="uploader" />
+    <retry-button :id="file.id" :uploader="uploader" />
+  </div>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import RetryButton from 'vue-fineuploader/components/retry-button'
+  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+
+export default {
+  data () {
+    const uploader = new FineUploader({
+      options: {
+        request: {
+          endpoint: 'my/upload/endpoint'
+        }
+      }
+    })
+
+    return {
+      state: {
+        submittedFiles: []
+      },
+      uploader
+    }
+  },
+
+  components: {
+    RetryButton,
+    Thumbnail
+  },
+
+  mounted() {
+    this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
+      if (newStatus === 'submitted') {
+        const submittedFiles = this.state.submittedFiles
+
+        submittedFiles.push(id)
+        this.$set(this.state, 'submittedFiles', submittedFiles)
+      }
+    })
+  }
+}
+</script>
+```
+
+You may pass _any_ standard [`<button>` attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) (or any standard element attributes, such as `data-` attributes) to the `<retry-button />` as well. These attributes will be attached to the underlying `<button>` element.
 
 #### `<status />`
 
