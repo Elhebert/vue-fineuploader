@@ -55,9 +55,9 @@ These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide a
 
 ### Installing
 
-Two dependencies that you will need to install yourself: an A+/Promise spec compliant polyfill (for IE11) and VueJS 2 (which is a peer dependency). This version is still in beta, thus, not yet available on npm, clone this repository to use it.
+Two dependencies that you will need to install yourself: an A+/Promise spec compliant polyfill (for IE11) and VueJS 2 (which is a peer dependency). This version is still in beta.
 
-[//]: # "Simply `npm install vue-fine-uploader` and see the documentation for your specific integration instructions (based on your needs)."
+Simply `npm install vue-fine-uploader@v2.0.0-rc.2` and see the documentation for your specific integration instructions (based on your needs).
 
 ### Wrapper Classes
 
