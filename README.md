@@ -3,7 +3,7 @@
    <img src="http://fineuploader.smartimage.com/pimg/a8680d51" width="300">
 </a>
 
-[//]: # "[![npm](https://img.shields.io/npm/v/vue-fineuploader.svg)](https://www.npmjs.com/package/vue-fineuploader)"
+[![npm](https://img.shields.io/npm/v/vue-fineuploader.svg)](https://www.npmjs.com/package/vue-fineuploader)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Stackoverflow](https://img.shields.io/badge/ask-on%20stack%20overflow-brightgreen.svg)](http://stackoverflow.com/questions/tagged/fine-uploader)
 
@@ -57,7 +57,7 @@ These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide a
 
 Two dependencies that you will need to install yourself: an A+/Promise spec compliant polyfill (for IE11) and VueJS 2 (which is a peer dependency). This version is still in beta.
 
-Simply `npm install vue-fine-uploader@v2.0.0-rc.2` and see the documentation for your specific integration instructions (based on your needs).
+Simply `npm install vue-fine-uploader@v2.0.0-rc.3` and see the documentation for your specific integration instructions (based on your needs).
 
 ### Wrapper Classes
 
