@@ -4,7 +4,7 @@ module.exports = {
     parserOptions: {
         sourceType: 'module',
     },
-    extends: 'airbnb-base',
+    extends: 'standard',
     // required to lint *.vue files
     plugins: [
         'html',
@@ -22,11 +22,10 @@ module.exports = {
     },
     // add your custom rules here
     'rules': {
-        // don't require .vue extension when importing
-        'import/extensions': ['error', 'always', {
-            'js': 'never',
-            'vue': 'never',
-        }],
+        // allow paren-less arrow functions
+        'arrow-parens': 0,
+        // allow async-await
+        'generator-star-spacing': 0,
         // allow debugger during development
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     },
