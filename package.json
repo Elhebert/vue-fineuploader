@@ -1,9 +1,9 @@
 {
   "name": "vue-fineuploader",
-  "version": "1.1.1",
-  "description": "A VueJS 2 component for Fine Uploader",
-  "keywords": ["fine-uploader", "vuejs", "fineuploader", "vue-fineuploader", "upload"],
-  "main": "FineUploader.vue",
+  "version": "2.0.0-rc.1",
+  "license": "MIT",
+  "description": "VueJS 2 components for using Fine Uploader in a Vue based project.",
+  "homepage": "https://github.com/Elhebert/vue-fineuploader#readme",
   "repository": {
     "url": "https://github.com/Elhebert/vue-fineuploader.git",
     "type": "git"
@@ -16,18 +16,34 @@
     "email" : "elhebert@hotmail.be",
     "url" : "https://dieterstinglhamber.me/"
   },
-  "license": "MIT",
+  "keywords": [
+    "file",
+    "blob",
+    "file-uploader",
+    "fine-uploader",
+    "vue",
+    "upload",
+    "widget"
+  ],
+  "main": "wrappers/traditional.js",
+  "peerDependencies": {
+    "vue": "2.x.x"
+  },
   "dependencies": {
-    "fine-uploader": "^5.11.10"
+    "fine-uploader": ">=5.11.10 <6.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "eslint": "^3.12.2",
-    "eslint-config-airbnb-base": "^11.0.0",
-    "eslint-plugin-html": "^1.7.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-config-standard": "^6.1.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "eslint-plugin-html": "^1.7.0"
+  },
+  "engines": {
+    "node": ">=5.0.0"
   },
   "scripts": {
-    "lint": "eslint FineUploader.vue"
+    "lint": "eslint ./src --ext .js,.vue --cache"
   }
 }
