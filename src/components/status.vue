@@ -7,6 +7,8 @@
 <style lang="css"></style>
 
 <script>
+  import isPlainObject from 'lodash.isplainobject'
+
   export default {
     props: {
       id: {
@@ -69,7 +71,7 @@
         uploading: 'Uploading...',
         upload_failed: 'Failed',
         upload_successful: 'Completed'
-      };
+      }
 
       return {
         state: {
@@ -91,7 +93,7 @@
 
     watch: {
       text (newValue, oldValue) {
-        this.$set(this.state, 'text', objectAssign({}, this.state.text, newValue))
+        this.$set(this.state, 'text', Object.assign({}, this.state.text, newValue))
       }
     },
 
@@ -107,7 +109,7 @@
         }
       },
 
-       _unregisterStatusChangeHandler() {
+      _unregisterStatusChangeHandler () {
         this.uploader.off('statusChange', this._onStatusChange)
       },
 
