@@ -93,7 +93,7 @@
       text (newValue, oldValue) {
         this.$set(this.state, 'text', objectAssign({}, this.state.text, newValue))
       }
-    }
+    },
 
     methods: {
       _onStatusChange (id, oldStatus, newStatus) {
