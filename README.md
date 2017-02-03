@@ -57,7 +57,7 @@ These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide a
 
 Two dependencies that you will need to install yourself: an A+/Promise spec compliant polyfill (for IE11) and VueJS 2 (which is a peer dependency). This version is still in beta.
 
-Simply `npm install vue-fine-uploader@v2.0.0-rc.3` and see the documentation for your specific integration instructions (based on your needs).
+Simply `npm install vue-fineuploader@v2.0.0-rc.3` and see the documentation for your specific integration instructions (based on your needs).
 
 ### Wrapper Classes
 
@@ -70,7 +70,7 @@ This enables you to upload to Azure directly. Your server must provide signature
 When creating a new instance of the Azure endpoint wrapper class, pass in an object that mirrors the format of the [Fine Uploader Azure Core options object](http://docs.fineuploader.com/branch/master/api/options-azure.html). This options property is entirely optional.
 
 ```javascript
-import FineUploaderAzure from 'vue-fine-uploader/wrappers/azure'
+import FineUploaderAzure from 'vue-fineuploader/wrappers/azure'
 
 const uploader = new FineUploaderAzure({
     options: {
@@ -131,7 +131,7 @@ Use the traditional endpoint wrapper class if you would like to upload files dir
 When creating a new instance of the S3 endpoint wrapper class, pass in an object that mirrors the format of the [Fine Uploader S3 Core options object](http://docs.fineuploader.com/branch/master/api/options-s3.html). You may also include a `callbacks` property to include any initial [core callback handlers](http://docs.fineuploader.com/branch/master/api/events-s3.html) that you might need. This options property is entirely optional though :laughing:.
 
 ```javascript
-import FineUploaderS3 from 'vue-fine-uploader/wrappers/s3'
+import FineUploaderS3 from 'vue-fineuploader/wrappers/s3'
 
 const uploader = new FineUploaderS3({
     options: {
@@ -193,7 +193,7 @@ Use the traditional endpoint wrapper class if you would like to upload files to 
 When creating a new instance of the traditional endpoint wrapper class, pass in an object that mirrors the format of the [Fine Uploader Core options object](http://docs.fineuploader.com/branch/master/api/options.html). You may also include a `callbacks` property to include any initial [core callback handlers](http://docs.fineuploader.com/branch/master/api/events.html) that you might need. This options property is entirely optional.
 
 ```javascript
-import FineUploaderTraditional from 'vue-fine-uploader'
+import FineUploaderTraditional from 'vue-fineuploader'
 
 const uploader = new FineUploaderTraditional({
    options: {
@@ -285,9 +285,9 @@ The example below will include a cancel button for each submitted file along wit
 </template>
 
 <script>
-  import CancelButton from 'vue-fine-uploader/components/cancel-button'
-  import FineUploaderTraditional from 'vue-fine-uploader'
-  import Thumbnail from 'vue-fine-uploader/components/thumbnail'
+  import CancelButton from 'vue-fineuploader/components/cancel-button'
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
   export default {
     components: {
@@ -374,9 +374,9 @@ The example below will include a delete button for each submitted file along wit
 </template>
 
 <script>
-  import DeleteButton from 'vue-fine-uploader/components/delete-button'
-  import FineUploaderTraditional from 'vue-fine-uploader'
-  import Thumbnail from 'vue-fine-uploader/components/thumbnail'
+  import DeleteButton from 'vue-fineuploader/components/delete-button'
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
   export default {
     components: {
@@ -466,8 +466,8 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 </template>
 
 <script>
-  import Dropzone from 'react-fine-uploader/components/dropzone'
-  import FineUploaderTraditional from 'react-fine-uploader'
+  import Dropzone from 'vue-fineuploader/components/dropzone'
+  import FineUploaderTraditional from 'vue-fineuploader'
 
   export default {
     components: {
@@ -663,9 +663,9 @@ The example below will include a pause/resume button for each submitted file alo
 </template>
 
 <script>
-  import FineUploaderTraditional from 'react-fine-uploader'
-  import PauseResumeButton from 'react-fine-uploader/components/PauseResume-button'
-  import Thumbnail from 'react-fine-uploader/components/thumbnail'
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import PauseResumeButton from 'vue-fineuploader/components/PauseResume-button'
+  import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
   export default {
     data () {
