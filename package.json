@@ -45,6 +45,8 @@
     "node": ">=5.0.0"
   },
   "scripts": {
+    "build": "rm -rf lib && mkdir -p lib && rsync -av src/ lib",
+    "push-to-npm": "cp package.json README.md LICENSE lib && (cd lib ; npm publish)",
     "lint": "eslint ./src --ext .js,.vue --cache"
   }
 }
