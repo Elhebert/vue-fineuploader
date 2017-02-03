@@ -1,6 +1,6 @@
 {
   "name": "vue-fineuploader",
-  "version": "2.0.0-rc.3",
+  "version": "2.0.0-rc.4",
   "license": "MIT",
   "description": "VueJS 2 components for using Fine Uploader in a Vue based project.",
   "homepage": "https://github.com/Elhebert/vue-fineuploader#readme",
@@ -25,12 +25,13 @@
     "upload",
     "widget"
   ],
-  "main": "wrappers/traditional.js",
+  "main": "components/dropzone.vue",
   "peerDependencies": {
     "vue": "2.x.x"
   },
   "dependencies": {
-    "fine-uploader": ">=5.11.10 <6.0.0"
+    "fine-uploader": ">=5.11.10 <6.0.0",
+    "fine-uploader-wrappers": "0.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -44,6 +45,8 @@
     "node": ">=5.0.0"
   },
   "scripts": {
+    "build": "rm -rf lib && mkdir -p lib && rsync -av src/ lib",
+    "push-to-npm": "cp package.json README.md LICENSE lib && (cd lib ; npm publish)",
     "lint": "eslint ./src --ext .js,.vue --cache"
   }
 }
