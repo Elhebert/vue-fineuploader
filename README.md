@@ -31,13 +31,11 @@ These combine many focused components that provide style (which can be adjusted 
 
 These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide additional features such as the ability to dynamically register multiple event/callback listeners. All individual and higher-order/focused components require you to pass a constructed wrapper class instance.
 
+More information, such as examples and API documentation, can be found in the README of the [fine-uploader-wrappers project](https://github.com/FineUploader/fine-uploader-wrappers).
+
 ### Quick Reference
 
 - [Installing](#installing)
-- [Wrapper Classes](#wrapper-classes)
-   - [Azure](#azure) - upload files directly to Azure storage
-   - [S3](#s3) - upload files to directly to an Amazon Simple Storage Service (S3) bucket. Your server must sign requests using a private key.
-   - [Traditional](#traditional) - upload files to a server you created and control.
 - [High-level Components](#high-level-components)
    - [`<gallery />`](#gallery-)
 - [Low-level Components](#low-level-components)
@@ -57,7 +55,7 @@ These wrap a Fine Uploader instance for use in Vue Fine Uploader. They provide a
 
 Two dependencies that you will need to install yourself: an A+/Promise spec compliant polyfill (for IE11) and VueJS 2 (which is a peer dependency). This version is still in beta.
 
-Simply `npm install vue-fineuploader@v2.0.0-rc.3` and see the documentation for your specific integration instructions (based on your needs).
+Simply `npm install vue-fineuploader@next` and see the documentation for your specific integration instructions (based on your needs).
 
 ### Wrapper Classes
 
