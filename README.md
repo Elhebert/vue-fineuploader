@@ -5,7 +5,6 @@
 
 [![npm](https://img.shields.io/npm/v/vue-fineuploader.svg)](https://www.npmjs.com/package/vue-fineuploader)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
-[![Stackoverflow](https://img.shields.io/badge/ask-on%20stack%20overflow-brightgreen.svg)](http://stackoverflow.com/questions/tagged/fine-uploader)
 
 Makes using [Fine Uploader](http://fineuploader.com) in a VueJS 2 app simple. Drop-in high-level components for a turn-key UI. Use small focused components to build a more custom UI.
 
