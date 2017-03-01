@@ -58,7 +58,7 @@
     },
 
     methods: {
-      _onStatusChange: (id, oldStatus, newStatus) => {
+      _onStatusChange (id, oldStatus, newStatus) {
         if (id === this.id && !this._unmounted) {
           if (!isCancelable(newStatus) && this.state.cancelable) {
             this.$set(this.state, 'cancelable', false)
@@ -70,9 +70,11 @@
         }
       },
 
-      _onClick: () => this.uploader.methods.cancel(this.id),
+      _onClick () {
+        this.uploader.methods.cancel(this.id)
+      },
 
-      _unregisterStatusChangeHandler: () => {
+      _unregisterStatusChangeHandler () {
         this.uploader.off('statusChange', this._onStatusChange)
       }
     }

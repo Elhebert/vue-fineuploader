@@ -1,6 +1,6 @@
 <template>
   <div class="fine-uploader-dropzone-container" ref="dropZone">
-      <slot ref="emement"></slot>
+      <slot ref="element"></slot>
   </div>
 </template>
 
