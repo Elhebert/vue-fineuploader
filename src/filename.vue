@@ -32,9 +32,11 @@
     },
 
     methods: {
-      shouldComponentUpdate: (nextProps, nextState) => nextState.filename !== this.state.filename,
+      shouldComponentUpdate (nextProps, nextState) {
+        return nextState.filename !== this.state.filename
+      },
 
-      _interceptSetName: () => {
+      _interceptSetName () {
         const oldSetName = this.uploader.methods.setName
 
         this.uploader.methods.setName = (id, newName) => {
