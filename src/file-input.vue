@@ -1,12 +1,11 @@
 <template>
   <div class="vue-fine-uploader-file-input">
-    <label :for="inputID">
+    <label>
       <slot>Upload File</slot>
+      <input type="file"
+             @change="_onFilesSelected"
+             :multiple="multiple"/>
     </label>
-    <input type="file"
-         :id="inputID"
-         @change="_onFilesSelected"
-         :multiple="multiple"/>
   </div>
 </template>
 
@@ -27,9 +26,6 @@
 </style>
 
 <script>
-  // Input/label pairs should have unique, matching IDs.
-  const randomID = () => Math.floor(Math.random() * (9999 - 1000)) + 1000
-
   export default {
     props: {
       multiple: {
@@ -44,8 +40,7 @@
 
     data () {
       return {
-        _unmounted: false,
-        inputID: `file-input-${randomID()}`
+        _unmounted: false
       }
     },
 
