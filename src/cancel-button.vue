@@ -1,9 +1,10 @@
 <template>
-  <button v-if="onlyRenderIfCancelable || state.cancelable"
+  <button v-if="!onlyRenderIfCancelable || state.cancelable"
+          type="button"
           aria-label="cancel"
           class="vue-fine-uploader-cancel-button"
           :disabled="!state.cancelable"
-          :onClick="state.cancelable && _onClick">
+          @click="_onClick">
       <slot>Cancel</slot>
   </button>
 </template>
@@ -71,7 +72,9 @@
       },
 
       _onClick () {
-        this.uploader.methods.cancel(this.id)
+        if (this.state.cancelable) {
+          this.uploader.methods.cancel(this.id)
+        }
       },
 
       _unregisterStatusChangeHandler () {

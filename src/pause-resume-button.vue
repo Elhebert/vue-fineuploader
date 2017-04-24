@@ -5,8 +5,8 @@
           :class="buttonClassName"
           :disabled="!state.pausable && !state.resumable"
           @click="_onClick">
-      <slot v-if="resumable" name="resume">Resume</slot>
-      <slot v-else name="pause">Pause</slot>
+      <slot v-if="state.resumable" name="resume">Resume</slot>
+      <slot v-else name="state.pause">Pause</slot>
   </button>
 </template>
 
@@ -20,6 +20,10 @@
         required: true
       },
       onlyRenderIfEnabled: {
+        type: Boolean,
+        default: true
+      },
+      allowPauseOnlyAfterFirstChunk: {
         type: Boolean,
         default: true
       },
@@ -74,16 +78,10 @@
           const pausable = this.isPausable(newStatus)
           const resumable = !pausable && this.isResumable(newStatus)
 
-          if (!pausable && this.state.pausable) {
-            this.$set(this.state, 'pausable', pausable)
-            this.$set(this.state, 'resumable', resumable)
-          } else if (resumable && !this.state.resumable) {
-            this.$set(this.state, 'pausable', pausable)
-            this.$set(this.state, 'resumable', resumable)
-          } else if (!resumable && this.state.resumable) {
-            this.$set(this.state, 'pausable', pausable)
-            this.$set(this.state, 'resumable', resumable)
-          } else if (newStatus === 'deleted' || newStatus === 'canceled' || newStatus === 'upload successful') {
+          this.$set(this.state, 'pausable', pausable)
+          this.$set(this.state, 'resumable', resumable)
+
+          if (newStatus === 'deleted' || newStatus === 'canceled' || newStatus === 'upload successful') {
             this._unregisterStatusChangeHandler()
             this._unregisterOnUploadChunkHandler()
           }
@@ -99,7 +97,7 @@
       },
 
       _onUploadChunk (id, name, chunkData) {
-        if (id === this.id && !this._unmounted) {
+        if (id === this.id && this.allowPauseOnlyAfterFirstChunk === true && !this._unmounted) {
           if (chunkData.partIndex > 0 && !this.state.pausable) {
             this.$set(this.state, 'pausable', true)
             this.$set(this.state, 'resumable', false)

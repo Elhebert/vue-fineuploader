@@ -1,17 +1,16 @@
 <template>
-  <span className="vue-fine-uploader-filesize">
-    <span v-if="size == null || size < 0">
-      <span className="react-fine-uploader-filesize-value">
-        {{ formattedSize }}
-      </span>
-      <span className="vue-fine-uploader-filesize-separator"> </span>
-      <span className="vue-fine-uploader-filesize-unit">
-        {{ formattedUnits }}
-      </span>
-    </span>
-  </span>
+<!-- Because of inline elements and whitespace, we remove the whitespace using
+comments so that we don't interrupt text flow where this component is used -->
+<!----><span v-if="!(state.size == null || state.size < 0)" class="vue-fine-uploader-filesize"><!--
+      --><span class="vue-fine-uploader-filesize-value"><!--
+        -->{{ formatted.size }}
+         </span><!--
+      --><span class="vue-fine-uploader-filesize-separator"> </span><!--
+      --><span class="vue-fine-uploader-filesize-unit"><!--
+        -->{{ formatted.units }}<!--
+      --></span><!--
+    --></span>
 </template>
-
 
 <style lang="css"></style>
 
@@ -39,7 +38,7 @@
       formattedUnits = units.terabyte
     }
 
-    return { formattedSize, formattedUnits }
+    return { size: formattedSize, units: formattedUnits }
   }
 
   const areUnitsEqual = (units1, units2) => {
@@ -102,9 +101,13 @@
       return {
         state: {
           size: this.uploader.methods.getSize(this.id)
-        },
-        formattedSize: {},
-        formattedUnits: {}
+        }
+      }
+    },
+
+    computed: {
+      formatted () {
+        return formatSizeAndUnits({ size: this.state.size, units: this.units })
       }
     },
 
@@ -119,9 +122,6 @@
           }
         }
       }
-
-      this.formattedSize = formatSizeAndUnits({ size: this.state.size, units: this.units }).formattedSize
-      this.formattedUnits = formatSizeAndUnits({ size: this.state.size, units: this.units }).formattedUnits
     },
 
     mounted () {
