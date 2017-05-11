@@ -96,14 +96,14 @@ comments so that we don't interrupt text flow where this component is used -->
       const uploads = this.uploader.methods.getUploads()
       let fileStatus = null
 
-      uploads.forEach(function(upload) {
+      uploads.forEach(function (upload) {
         if (upload.id === this.id) {
           fileStatus = upload.status
         }
-      }, this);
+      }, this)
 
       if (fileStatus !== null) {
-        this._onStatusChange(this.id, null, fileStatus);
+        this._onStatusChange(this.id, null, fileStatus)
       }
     },
 
