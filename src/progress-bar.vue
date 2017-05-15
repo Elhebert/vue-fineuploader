@@ -69,12 +69,14 @@
       _createEventHandlers () {
         if (this._isTotalProgress) {
           this._trackProgressEventHandler = (bytesUploaded, totalSize) => {
-            this.setState({ bytesUploaded, totalSize })
+            this.$set(this.state, 'bytesUploaded', bytesUploaded)
+            this.$set(this.state, 'totalSize', totalSize)
           }
         } else {
           this._trackProgressEventHandler = (id, name, bytesUploaded, totalSize) => {
             if (id === this.id) {
-              this.$set(this.state, 'bytesUploaded', totalSize)
+              this.$set(this.state, 'bytesUploaded', bytesUploaded)
+              this.$set(this.state, 'totalSize', totalSize)
             }
           }
         }
@@ -116,7 +118,7 @@
 
     computed: {
       _isTotalProgress () {
-        return !!this.id
+        return typeof this.id !== 'number'
       },
 
       className () {
