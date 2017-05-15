@@ -302,7 +302,51 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 
 #### `<file-input />`
 
-Not implemented yet
+The `<file-input />` component allows you to easily render and style an `<input type="file">` element and connect it to a Fine Uploader instance. When any files are selected via the file chooser dialog, they will be submitted directly to the associated Fine Uploder instance.
+
+##### Properties
+
+- `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
+
+For example, suppose you wanted to create a file input button with an upload icon and some text that allows the user to select multiple files, but excludes everything but images in the chooser dialog ([where supported](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Browser_compatibility)). When files are selected by the user, they should be submitted directly to a Fine Uploader traditional endpoint handler:
+
+Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) loaded on your page.
+
+```html
+<template>
+  <file-input multiple accept='image/*' :uploader="uploader">
+    <span class="icon ion-upload">Choose Files</span>
+  </file-input>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import FileInput from 'vue-fineuploader/components/file-input'
+
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+            request: {
+              endpoint: 'my/upload/endpoint'
+            }
+        }
+      })
+
+      return {
+        uploader
+      }
+    },
+
+    component: {
+      FileInput
+    }
+  }
+</script>
+```
+
+You may pass _any_ [standard `<input type="file">` attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) to the `<file-input />` component.
+
 
 #### `<filename />`
 
