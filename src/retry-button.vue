@@ -1,9 +1,9 @@
 <template>
-  <button v-if="onlyRenderIfRetryable || state.retryable"
+  <button v-if="onlyRenderIfRetryable && state.retryable"
           aria-label="retry"
-          class="react-fine-uploader-retry-button"
+          class="vue-fine-uploader-retry-button"
           :disabled="!state.retryable"
-          :onClick="state.retryable && _onClick">
+          @click="_onClick">
     <slot>Retry</slot>
   </button>
 </template>
@@ -69,7 +69,9 @@
       },
 
       _onClick () {
-        this.uploader.methods.retry(this.id)
+        if (this.state.retryable) {
+          this.uploader.methods.retry(this.id)
+        }
       },
 
       _unregisterEventHandlers () {

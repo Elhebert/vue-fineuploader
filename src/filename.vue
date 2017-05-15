@@ -1,7 +1,9 @@
 <template>
-  <span class="vue-fine-uploader-filename">
-    {{ this.state.filename }}
-  </span>
+<!-- Because of inline elements and whitespace, we remove the whitespace using
+comments so that we don't interrupt text flow where this component is used -->
+<!----><span class="vue-fine-uploader-filename"><!--
+      -->{{ this.state.filename }}<!--
+    --></span>
 </template>
 
 <style lang="css"></style>
@@ -32,9 +34,11 @@
     },
 
     methods: {
-      shouldComponentUpdate: (nextProps, nextState) => nextState.filename !== this.state.filename,
+      shouldComponentUpdate (nextProps, nextState) {
+        return nextState.filename !== this.state.filename
+      },
 
-      _interceptSetName: () => {
+      _interceptSetName () {
         const oldSetName = this.uploader.methods.setName
 
         this.uploader.methods.setName = (id, newName) => {

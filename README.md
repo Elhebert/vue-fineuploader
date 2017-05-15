@@ -255,11 +255,11 @@ This component provides an element that will accept dropped files or directories
 
 - `multiple` - Directly maps to the [`allowMultipleItems` property on Fine Uploader's standalone drag-and-drop module](http://docs.fineuploader.com/branch/master/features/drag-and-drop.html#allowMultipleItems).
 
-- `onDropError` - Directly maps to the [`callbacks.dropError` option on Fine Uploader's standalone drag-and-drop module](http://docs.fineuploader.com/branch/master/features/drag-and-drop.html#dropError). React Fine Uploader will log any errors when the underlying DnD instance invokes the `dropError` callback, but you can specify additional behavior as well.
+- `onDropError` - Directly maps to the [`callbacks.dropError` option on Fine Uploader's standalone drag-and-drop module](http://docs.fineuploader.com/branch/master/features/drag-and-drop.html#dropError). Vue Fine Uploader will log any errors when the underlying DnD instance invokes the `dropError` callback, but you can specify additional behavior as well.
 
 - `onProcesssingDroppedFiles` - Directly maps to the [`callbacks.processingDroppedFiles` option on Fine Uploader's standalone drag-and-drop module](http://docs.fineuploader.com/branch/master/features/drag-and-drop.html#processingDroppedFiles).
 
-- `onProcessingDroppedFilesComplete` - Directly maps to the [`callbacks.processingDroppedFilesComplete` option on Fine Uploader's standalone drag-and-drop module](http://docs.fineuploader.com/branch/master/features/drag-and-drop.html#processingDroppedFilesComplete). React Fine Uploader will send all files to the underlying Fine Uploader instance when this callback is invoked, but you may specify additional logic as well.
+- `onProcessingDroppedFilesComplete` - Directly maps to the [`callbacks.processingDroppedFilesComplete` option on Fine Uploader's standalone drag-and-drop module](http://docs.fineuploader.com/branch/master/features/drag-and-drop.html#processingDroppedFilesComplete). Vue Fine Uploader will send all files to the underlying Fine Uploader instance when this callback is invoked, but you may specify additional logic as well.
 
 - `uploader` - The only required option - a Fine Uploader [wrapper class](#wrapper-classes).
 
@@ -301,7 +301,51 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 
 #### `<file-input />`
 
-Not implemented yet
+The `<file-input />` component allows you to easily render and style an `<input type="file">` element and connect it to a Fine Uploader instance. When any files are selected via the file chooser dialog, they will be submitted directly to the associated Fine Uploder instance.
+
+##### Properties
+
+- `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
+
+For example, suppose you wanted to create a file input button with an upload icon and some text that allows the user to select multiple files, but excludes everything but images in the chooser dialog ([where supported](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Browser_compatibility)). When files are selected by the user, they should be submitted directly to a Fine Uploader traditional endpoint handler:
+
+Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) loaded on your page.
+
+```html
+<template>
+  <file-input multiple accept='image/*' :uploader="uploader">
+    <span class="icon ion-upload">Choose Files</span>
+  </file-input>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'vue-fineuploader'
+  import FileInput from 'vue-fineuploader/components/file-input'
+
+  export default {
+    data () {
+      const uploader = new FineUploader({
+        options: {
+            request: {
+              endpoint: 'my/upload/endpoint'
+            }
+        }
+      })
+
+      return {
+        uploader
+      }
+    },
+
+    component: {
+      FileInput
+    }
+  }
+</script>
+```
+
+You may pass _any_ [standard `<input type="file">` attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) to the `<file-input />` component.
+
 
 #### `<filename />`
 
@@ -313,7 +357,7 @@ The `<filename />` component renders the initial name of the associated file _an
 
 - `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
 
-Suppose you wanted to render a filename for each file as new files are submitted to Fine Uploader. Your React component may look like this:
+Suppose you wanted to render a filename for each file as new files are submitted to Fine Uploader. Your Vue component may look like this:
 
 Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
 
@@ -379,7 +423,7 @@ as "1.10 KB".
 
 - `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
 
-Suppose you wanted to render a file size for each file as new files are submitted to Fine Uploader. Your React component may look like this:
+Suppose you wanted to render a file size for each file as new files are submitted to Fine Uploader. Your Vue component may look like this:
 
 Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
 

@@ -1,6 +1,7 @@
 <template>
-  <button v-if="onlyRenderIfDeletable || state.deletable"
-          aria-label='delete'
+  <button v-if="!onlyRenderIfDeletable || state.deletable"
+          type="button"
+          aria-label="delete"
           class="vue-fine-uploader-delete-button"
           disabled="!state.deletable || state.deleting"
           @click="state.deletable && !state.deleting && _onClick">
@@ -26,7 +27,7 @@
       },
       onlyRenderIfDeletable: {
         type: Boolean,
-        defaultd: true
+        default: true
       },
       uploader: {
         type: Object,
@@ -54,7 +55,7 @@
     },
 
     methods: {
-      _onStatusChange: (id, oldStatus, newStatus) => {
+      _onStatusChange (id, oldStatus, newStatus) {
         if (id === this.id && !this._unmounted) {
           if (!isDeletable(newStatus) && newStatus !== 'deleting' && this.state.deletable) {
             !this._unmounted && this.$set(this.state, 'deletable', false)
@@ -69,9 +70,11 @@
         }
       },
 
-      _onClick: () => this.uploader.methods.deleteFile(this.props.id),
+      _onClick () {
+        this.uploader.methods.deleteFile(this.props.id)
+      },
 
-      _unregisterStatusChangeHandler: () => {
+      _unregisterStatusChangeHandler () {
         this.uploader.off('statusChange', this._onStatusChange)
       }
     }

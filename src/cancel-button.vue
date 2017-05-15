@@ -1,9 +1,10 @@
 <template>
-  <button v-if="onlyRenderIfCancelable || state.cancelable"
+  <button v-if="!onlyRenderIfCancelable || state.cancelable"
+          type="button"
           aria-label="cancel"
           class="vue-fine-uploader-cancel-button"
           :disabled="!state.cancelable"
-          :onClick="state.cancelable && _onClick">
+          @click="_onClick">
       <slot>Cancel</slot>
   </button>
 </template>
@@ -58,7 +59,7 @@
     },
 
     methods: {
-      _onStatusChange: (id, oldStatus, newStatus) => {
+      _onStatusChange (id, oldStatus, newStatus) {
         if (id === this.id && !this._unmounted) {
           if (!isCancelable(newStatus) && this.state.cancelable) {
             this.$set(this.state, 'cancelable', false)
@@ -70,9 +71,13 @@
         }
       },
 
-      _onClick: () => this.uploader.methods.cancel(this.id),
+      _onClick () {
+        if (this.state.cancelable) {
+          this.uploader.methods.cancel(this.id)
+        }
+      },
 
-      _unregisterStatusChangeHandler: () => {
+      _unregisterStatusChangeHandler () {
         this.uploader.off('statusChange', this._onStatusChange)
       }
     }

@@ -1,7 +1,9 @@
 <template>
-  <span class="vue-fine-uploader-status">
-    {{ state.status }}
-  </span>
+<!-- Because of inline elements and whitespace, we remove the whitespace using
+comments so that we don't interrupt text flow where this component is used -->
+<!-- --><span class="vue-fine-uploader-status"><!--
+          -->{{ state.status }}<!--
+     --></span>
 </template>
 
 <style lang="css"></style>
@@ -23,6 +25,7 @@
             paused: 'string',
             queued: 'string',
             retrying_upload: 'string',
+            submitted: 'string',
             submitting: 'string',
             uploading: 'string',
             upload_failed: 'string',
@@ -49,6 +52,7 @@
           paused: 'Paused',
           queued: 'Queued',
           retrying_upload: 'Retrying...',
+          submitted: 'Submitted',
           submitting: 'Submitting...',
           uploading: 'Uploading...',
           upload_failed: 'Failed',
@@ -67,6 +71,7 @@
         paused: 'Paused',
         queued: 'Queued',
         retrying_upload: 'Retrying...',
+        submitted: 'Submitted',
         submitting: 'Submitting...',
         uploading: 'Uploading...',
         upload_failed: 'Failed',
@@ -84,6 +89,22 @@
 
     mounted () {
       this.uploader.on('statusChange', this._onStatusChange)
+
+      // Read the status of the file when we start up
+      // in case it was already submitted, and there won't be a
+      // status change event to react to.
+      const uploads = this.uploader.methods.getUploads()
+      let fileStatus = null
+
+      uploads.forEach(function (upload) {
+        if (upload.id === this.id) {
+          fileStatus = upload.status
+        }
+      }, this)
+
+      if (fileStatus !== null) {
+        this._onStatusChange(this.id, null, fileStatus)
+      }
     },
 
     beforeDestroy () {
@@ -99,7 +120,7 @@
 
     methods: {
       _onStatusChange (id, oldStatus, newStatus) {
-        if (id === this.props.id && !this._unmounted) {
+        if (id === this.id && !this._unmounted) {
           const newStatusToDisplay = this.getStatusToDisplay({
             displayMap: this.state.text,
             status: newStatus
