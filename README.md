@@ -5,7 +5,6 @@
 
 [![npm](https://img.shields.io/npm/v/vue-fineuploader.svg)](https://www.npmjs.com/package/vue-fineuploader)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
-[![Stackoverflow](https://img.shields.io/badge/ask-on%20stack%20overflow-brightgreen.svg)](http://stackoverflow.com/questions/tagged/fine-uploader)
 
 Makes using [Fine Uploader](http://fineuploader.com) in a VueJS 2 app simple. Drop-in high-level components for a turn-key UI. Use small focused components to build a more custom UI.
 
@@ -95,7 +94,7 @@ The example below will include a cancel button for each submitted file along wit
 
 <script>
   import CancelButton from 'vue-fineuploader/components/cancel-button'
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
   export default {
@@ -184,7 +183,7 @@ The example below will include a delete button for each submitted file along wit
 
 <script>
   import DeleteButton from 'vue-fineuploader/components/delete-button'
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
   export default {
@@ -276,7 +275,7 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 
 <script>
   import Dropzone from 'vue-fineuploader/components/dropzone'
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
 
   export default {
     components: {
@@ -320,7 +319,7 @@ Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) lo
 </template>
 
 <script>
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import FileInput from 'vue-fineuploader/components/file-input'
 
   export default {
@@ -364,11 +363,11 @@ Note: This assumes you have additional components or code to allow files to actu
 
 ```html
 <template>
-  <filename v-for="file in state.submittedFiles" :id="file.id" :uploader="uploader" />
+  <filename v-for="file in state.submittedFiles" :id="file" :uploader="uploader" />
 </template>
 
 <script>
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import Filename from 'vue-fineuploader/components/filename'
 
   export default {
@@ -430,11 +429,11 @@ Note: This assumes you have additional components or code to allow files to actu
 
 ```html
 <template>
-  <filesize v-for="file in state.submittedFiles" :id="file.id" :uploader="uploader" />
+  <filesize v-for="file in state.submittedFiles" :id="file" :uploader="uploader" />
 </template>
 
 <script>
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import Filesize from 'vue-fineuploader/components/filesize'
 
   export default {
@@ -516,7 +515,7 @@ The example below will include a pause/resume button for each submitted file alo
 </template>
 
 <script>
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import PauseResumeButton from 'vue-fineuploader/components/PauseResume-button'
   import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
@@ -608,7 +607,7 @@ The example below will include a retry button for each submitted file along with
 </template>
 
 <script>
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import RetryButton from 'vue-fineuploader/components/retry-button'
   import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
@@ -684,7 +683,7 @@ Note: This assumes you have additional components or code to allow files to actu
 </template>
 
 <script>
-  import FineUploaderTraditional from 'vue-fineuploader'
+  import FineUploaderTraditional from 'fine-uploader-wrapper'
   import Status from 'vue-fineuploader/components/retry-button'
   import Thumbnail from 'vue-fineuploader/components/thumbnail'
 
