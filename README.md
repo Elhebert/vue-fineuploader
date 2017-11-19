@@ -60,7 +60,46 @@ Simply `npm install vue-fineuploader@next` and see the documentation for your sp
 
 #### `<gallery />`
 
-Not implemented yet.
+```javascript
+<template>
+  <Gallery :uploader="uploader" />
+</template>
+
+<script>
+  import FineUploaderTraditional from 'fine-uploader-wrappers';
+  import Gallery from '../modules/vue-fineuploader/src/gallery';
+
+  export default {
+    components: {
+      Gallery,
+    },
+    data () {
+      const uploader = new FineUploaderTraditional({
+        options: {
+          deleteFile: {
+            enabled: true,
+            endpoint: 'http://localhost:8000/uploads'
+          },
+          request: {
+              endpoint: 'http://localhost:8000/uploads',
+              // Used for AWS
+              // accessKey: 'JB/Ckd2bcqydVOYhbbAZo+kTgGWzeXQt9UacmaC7',
+          },
+        }
+      })
+
+      return {
+        uploader,
+      }
+    },
+  }
+</script>
+```
+
+Todos
+- Implement animation
+- Fix progress bar
+- Fix slot for content
 
 ### Low-level Components
 
@@ -724,4 +763,98 @@ Note: This assumes you have additional components or code to allow files to actu
 
 #### `<thumbnail />`
 
-Not implemented yet
+```javascript
+<template>
+  <div>
+    <file-input multiple accept='image/*' :uploader="uploader">
+        <Dropzone class="dropzone"
+                :uploader="uploader" :multiple="true">
+        <span>Drop Files Here / Click to Upload Files</span>
+      </Dropzone>
+    </file-input>
+
+    <div v-for="file in state.submittedFiles">
+      <thumbnail :id="file" :uploader="uploader" />
+      <cancel-button :id="file" :uploader="uploader" />
+      <delete-button :id="file" :uploader="uploader" />
+    </div>
+  </div>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
+  import Thumbnail from '../modules/vue-fineuploader/src/thumbnail'
+  import Dropzone from '../modules/vue-fineuploader/src/dropzone'
+  import FileInput from '../modules/vue-fineuploader/src/file-input'
+  import DeleteButton from '../modules/vue-fineuploader/src/delete-button'
+  import CancelButton from '../modules/vue-fineuploader/src/cancel-button'
+  
+  import 'fine-uploader/fine-uploader/fine-uploader.css'
+
+  export default {
+    components: {
+      Dropzone,
+      FileInput,
+      Thumbnail,
+      DeleteButton,
+      CancelButton,
+    },
+
+    data () {
+      const uploader = new FineUploaderTraditional({
+        options: {
+          deleteFile: {
+            enabled: true,
+            endpoint: 'http://localhost:8000/uploads'
+          },
+          request: {
+              endpoint: 'http://localhost:8000/uploads',
+              // Used for AWS
+              // accessKey: 'JB/Ckd2bcqydVOYhbbAZo+kTgGWzeXQt9UacmaC7',
+          },
+        }
+      })
+
+      return {
+        uploader,
+        state: {
+          submittedFiles: []
+        }
+      }
+    },
+
+    mounted() {
+      this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
+        if (newStatus === 'submitted') {
+          const submittedFiles = this.state.submittedFiles
+          submittedFiles.push(id)
+          this.$set(this.state, 'submittedFiles', submittedFiles);
+        }
+        else if (isFileGone(newStatus)) {
+          const submittedFiles = this.state.submittedFiles
+          const indexToRemove = submittedFiles.indexOf(id)
+
+          submittedFiles.splice(indexToRemove, 1)
+          this.$set(this.state, 'submittedFiles', submittedFiles)
+        }
+      })
+    },
+  }
+
+
+  const isFileGone = status => {
+      return [
+          'canceled',
+          'deleted',
+      ].indexOf(status) >= 0;
+  }
+</script>
+
+<style>
+  .dropzone { 
+    border: 1px dotted;
+    height: 200px;
+    width: 500px;
+  }
+</style>
+```
