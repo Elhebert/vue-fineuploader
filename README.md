@@ -66,7 +66,7 @@ In the `<gallery />` component, each file is rendered as a "card". CSS transitio
 
 ##### Properties
 
-The only required property is `uploader`, which must be a Fine Uploader [wrapper class](#wrapper-classes) instance. But you can pass any property supported by any low-level component through `<gallery />` by following this simple convention: `{lowerCamelCaseComponentName}-{propertyName}: {value}`. For example, if you want to specify custom child elements for the [`<FileInput />` element](#fileinput-), you would initialize the component like so:
+The only required property is `uploader`, which must be a Fine Uploader [wrapper class](#wrapper-classes) instance.
 
 ```js
 <template>
@@ -102,7 +102,7 @@ The only required property is `uploader`, which must be a Fine Uploader [wrapper
 </script>
 ```
 
-Todos
+##### Todos
 - Implement animation
 - Fix progress bar
 - Fix slot for content
