@@ -58,26 +58,19 @@
         type: Number,
         default: defaultMaxSize
       },
-      // This should be passed down in the node
-      // notAvailablePlaceholder: {
-      //  type: Element,
-      // },
       uploader: {
         type: Object,
         required: true
       }
-      // waitingPlaceholder: {
-      //  type: Element,
-      // },
     },
     data () {
       return {
         drawComplete: false,
         notAvailableStatus,
         waitingStatus,
-        placeholderClass: `react-fine-uploader-thumbnail ${this.class || ''}`,
-        rootClass: `react-fine-uploader-thumbnail-container ${(this.class && this.class + '-container') || ''}`,
-        canvasClass: `react-fine-uploader-thumbnail ${this.class || ''}`
+        placeholderClass: `vue-fine-uploader-thumbnail ${this.class || ''}`,
+        rootClass: `vue-fine-uploader-thumbnail-container ${(this.class && this.class + '-container') || ''}`,
+        canvasClass: `vue-fine-uploader-thumbnail ${this.class || ''}`
       }
     },
     computed: {

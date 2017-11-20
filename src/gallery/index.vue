@@ -10,7 +10,6 @@ Notes:
     :dropActiveClassName="dropzoneDropActiveClassName"
     :multiple="dropzoneMultiple"
   >
-    <!-- content={ this.props.children } -->
     <!-- TODO: Rendering Default Content when it is null -->
     <!-- Current idea would be to bring MaybeDropzoneContent up to here -->
     <!-- <div slot="content"><slot name="content"></slot></div> -->
@@ -20,33 +19,24 @@ Notes:
       :uploader="uploader"
     />
     <ProgressBar 
-      class='react-fine-uploader-gallery-total-progress-bar'
+      class='vue-fine-uploader-gallery-total-progress-bar'
       :uploader="uploader"
     />
 
-    <!-- <ReactCssTransitionGroup 
-      class='react-fine-uploader-gallery-files'
-      component='ul'
-      transitionEnter={ !this.props.animationsDisabled }
-      transitionEnterTimeout={ 500 }
-      transitionLeave={ !this.props.animationsDisabled }
-      transitionLeaveTimeout={ 300 }
-      transitionName='react-fine-uploader-gallery-files'
-    > -->
-      <!-- this.state.visibleFiles.map(({ id, status, fromServer }) => ( -->
-    <ul class="react-fine-uploader-gallery-files">
+    <!-- TODO: Import Transition similar to ReactCssTransitionGroup -->
+    <ul class="vue-fine-uploader-gallery-files">
       <li 
         :key="id"
-        class='react-fine-uploader-gallery-file'
+        class='vue-fine-uploader-gallery-file'
         v-for="({ id, status, fromServer }) in state.visibleFiles"
       >
         <ProgressBar 
-          class='react-fine-uploader-gallery-progress-bar'
+          class='vue-fine-uploader-gallery-progress-bar'
           :id="id"
           :uploader="uploader"
         />
         <Thumbnail 
-          class='react-fine-uploader-gallery-thumbnail'
+          class='vue-fine-uploader-gallery-thumbnail'
           :id="id"
           :fromServer="fromServer"
           :uploader="uploader"
@@ -54,49 +44,49 @@ Notes:
         />
         
         <span v-if="status === 'upload successful'">
-          <UploadSuccessIcon class='react-fine-uploader-gallery-upload-success-icon' />
-          <div class='react-fine-uploader-gallery-thumbnail-icon-backdrop' />
+          <UploadSuccessIcon class='vue-fine-uploader-gallery-upload-success-icon' />
+          <div class='vue-fine-uploader-gallery-thumbnail-icon-backdrop' />
         </span>
 
         <span v-if="status === 'upload failed'">
-          <UploadFailedIcon class='react-fine-uploader-gallery-upload-failed-icon' />
-          <div class='react-fine-uploader-gallery-thumbnail-icon-backdrop' />
+          <UploadFailedIcon class='vue-fine-uploader-gallery-upload-failed-icon' />
+          <div class='vue-fine-uploader-gallery-thumbnail-icon-backdrop' />
         </span>
 
-        <div class='react-fine-uploader-gallery-file-footer'>
+        <div class='vue-fine-uploader-gallery-file-footer'>
           <Filename 
-            class='react-fine-uploader-gallery-filename'
+            class='vue-fine-uploader-gallery-filename'
             :id="id"
             :uploader="uploader"
           />
             <Status 
-              class='react-fine-uploader-gallery-status'
+              class='vue-fine-uploader-gallery-status'
               :id="id"
               :uploader="uploader"
             />
             <Filesize 
-              class='react-fine-uploader-gallery-filesize'
+              class='vue-fine-uploader-gallery-filesize'
               :id="id"
               :uploader="uploader"
             />
         </div>
                   
         <CancelButton 
-          class='react-fine-uploader-gallery-cancel-button'
+          class='vue-fine-uploader-gallery-cancel-button'
           :id="id"
           :uploader="uploader"
         >
           <slot><XIcon /></slot>
         </CancelButton>
         <RetryButton 
-          class='react-fine-uploader-gallery-retry-button'
+          class='vue-fine-uploader-gallery-retry-button'
           :id="id"
           :uploader="uploader"
         >
           <slot><PlayIcon /></slot>
         </RetryButton>
         <DeleteButton 
-          class='react-fine-uploader-gallery-delete-button'
+          class='vue-fine-uploader-gallery-delete-button'
           :id="id"
           :uploader="uploader"
           v-if="deleteEnabled"
@@ -104,7 +94,7 @@ Notes:
           <slot><XIcon /></slot> 
         </DeleteButton>
         <PauseResumeButton 
-          class='react-fine-uploader-gallery-pause-resume-button'
+          class='vue-fine-uploader-gallery-pause-resume-button'
           :id="id"
           :uploader="uploader"
           v-if="chunkingEnabled"
@@ -116,13 +106,10 @@ Notes:
         </PauseResumeButton>
       </li>
     </ul>
-    <!-- </ReactCssTransitionGroup> -->
   </MaybeDropzone>
 </template>
 
 <script>
-  // import { CSSTransitionGroup as ReactCssTransitionGroup } from 'react-transition-group'
-
   import CancelButton from '../cancel-button'
   import DeleteButton from '../delete-button'
   import Dropzone from '../dropzone'
@@ -191,7 +178,7 @@ Notes:
         default: false
       },
       dropzoneDropActiveClassName: {
-        default: 'react-fine-uploader-gallery-dropzone-active'
+        default: 'vue-fine-uploader-gallery-dropzone-active'
       },
       dropzoneMultiple: {
         default: true
@@ -257,8 +244,10 @@ Notes:
         this.state.visibleFiles.some(file => {
           if (file.id === id) {
             file.status = status
-            // TODO: Force an update. There is a bug where it does not delete properly
+            // TODO: Trigger an update. Currently, complete isn't showing unless another action occurs. If the code below is enabled, there is a bug where it does not delete properly
+            // Vue Code
             // this.state.visibleFiles = { ...this.state.visibleFiles };
+            // React Code
             // this.setState({ visibleFiles: this.state.visibleFiles })
             return true
           }

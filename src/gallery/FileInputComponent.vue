@@ -1,12 +1,12 @@
 <template>
   <FileInput 
-    class='react-fine-uploader-gallery-file-input-container'
+    class='vue-fine-uploader-gallery-file-input-container'
     :uploader="uploader"
     :multiple="multiple"
   >
-    <span class='react-fine-uploader-gallery-file-input-content'>
+    <span class='vue-fine-uploader-gallery-file-input-content'>
       <slot>
-        <UploadIcon class='react-fine-uploader-gallery-file-input-upload-icon' />
+        <UploadIcon class='vue-fine-uploader-gallery-file-input-upload-icon' />
         Select Files
       </slot>
     </span>

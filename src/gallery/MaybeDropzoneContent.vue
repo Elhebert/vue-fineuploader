@@ -6,7 +6,7 @@
     {{ content }}
   </span>
   <span :class="className" v-else-if="!disabled">
-    <UploadIcon class='react-fine-uploader-gallery-dropzone-upload-icon' />
+    <UploadIcon class='vue-fine-uploader-gallery-dropzone-upload-icon' />
     Drop files here
   </span>
 </template>
@@ -29,8 +29,8 @@
     computed: {
       className () {
         return this.disabled
-          ? 'react-fine-uploader-gallery-nodrop-content'
-          : 'react-fine-uploader-gallery-dropzone-content'
+          ? 'vue-fine-uploader-gallery-nodrop-content'
+          : 'vue-fine-uploader-gallery-dropzone-content'
       }
     }
   }

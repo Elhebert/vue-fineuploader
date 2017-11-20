@@ -1,7 +1,7 @@
 <template>
   <div>
     <div 
-      class='react-fine-uploader-gallery-nodrop-container'
+      class='vue-fine-uploader-gallery-nodrop-container'
       v-if="dropzoneDisabled"
     >
       <span v-if="hasVisibleFiles"/>
@@ -18,7 +18,7 @@
     </div>
 
     <Dropzone 
-      class='react-fine-uploader-gallery-dropzone'
+      class='vue-fine-uploader-gallery-dropzone'
       :uploader="uploader"
       :disabled="disabled"
       :dropActiveClassName="dropActiveClassName"
@@ -64,7 +64,7 @@
       },
       dropActiveClassName: {
         type: String,
-        default: 'react-fine-uploader-gallery-dropzone-active'
+        default: 'vue-fine-uploader-gallery-dropzone-active'
       },
       multiple: {
         type: Boolean,
