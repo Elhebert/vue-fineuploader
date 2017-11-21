@@ -109,98 +109,6 @@ The only required property is `uploader`, which must be a Fine Uploader [wrapper
 
 ### Low-level Components
 
-#### Script
-
-```js
-<template>
-  <div>
-    <file-input multiple accept='image/*' :uploader="uploader">
-      <Dropzone 
-        class="dropzone"
-        :uploader="uploader" 
-        :multiple="true"
-      >
-        <span>Drop Files Here / Click to Upload Files</span>
-      </Dropzone>
-    </file-input>
-
-    <div v-for="file in state.submittedFiles">
-      <thumbnail :id="file" :uploader="uploader" />
-      <cancel-button :id="file" :uploader="uploader" />
-      <delete-button :id="file" :uploader="uploader" />
-    </div>
-  </div>
-</template>
-
-<script>
-  import FineUploaderTraditional from 'fine-uploader-wrappers'
-  import Thumbnail from 'vue-fineuploader/thumbnail'
-  import Dropzone from 'vue-fineuploader/dropzone'
-  import FileInput from 'vue-fineuploader/file-input'
-  import DeleteButton from 'vue-fineuploader/delete-button'
-  import CancelButton from 'vue-fineuploader/cancel-button'
-  
-  import 'fine-uploader/fine-uploader/fine-uploader.css'
-
-  export default {
-    components: {
-      Dropzone,
-      FileInput,
-      Thumbnail,
-      DeleteButton,
-      CancelButton
-    },
-    data () {
-      const uploader = new FineUploaderTraditional({
-        options: {
-          request: {
-            endpoint: 'my/upload/endpoint'
-          }
-        }
-      })
-
-      return {
-        uploader,
-        state: {
-          submittedFiles: []
-        }
-      }
-    },
-
-    mounted () {
-      this.uploader.on('statusChange', (id, oldStatus, newStatus) => {
-        if (newStatus === 'submitted') {
-          const submittedFiles = this.state.submittedFiles
-          submittedFiles.push(id)
-          this.$set(this.state, 'submittedFiles', submittedFiles)
-        } else if (isFileGone(newStatus)) {
-          const submittedFiles = this.state.submittedFiles
-          const indexToRemove = submittedFiles.indexOf(id)
-
-          submittedFiles.splice(indexToRemove, 1)
-          this.$set(this.state, 'submittedFiles', submittedFiles)
-        }
-      })
-    }
-  }
-
-  const isFileGone = status => {
-    return [
-      'canceled',
-      'deleted'
-    ].indexOf(status) >= 0
-  }
-</script>
-
-<style>
-  .dropzone { 
-    border: 1px dotted;
-    height: 200px;
-    width: 500px;
-  }
-</style>
-```
-
 #### `<cancel-button />`
 
 The `<cancel-button />` component allows you to easily render a useable cancel button for a submitted file. An file can be "canceled" at any time, except after it has uploaded successfully, and before it has passed validation (and of course after it has already been canceled).
@@ -890,8 +798,6 @@ Note: This assumes you have additional components or code to allow files to actu
 <template>
   <div v-for="file in state.submittedFiles">
     <thumbnail :id="file" :uploader="uploader" />
-    <cancel-button :id="file" :uploader="uploader" />
-    <delete-button :id="file" :uploader="uploader" />
   </div>
 </template>
 
