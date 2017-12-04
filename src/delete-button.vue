@@ -3,8 +3,8 @@
           type="button"
           aria-label="delete"
           class="vue-fine-uploader-delete-button"
-          disabled="!state.deletable || state.deleting"
-          @click="state.deletable && !state.deleting && _onClick">
+          :disabled="!state.deletable || state.deleting"
+          @click="_onClick">
       <slot>Delete</slot>
   </button>
 </template>
@@ -71,7 +71,9 @@
       },
 
       _onClick () {
-        this.uploader.methods.deleteFile(this.props.id)
+        if (this.state.deletable && !this.state.deleting) {
+          this.uploader.methods.deleteFile(this.id)
+        }
       },
 
       _unregisterStatusChangeHandler () {

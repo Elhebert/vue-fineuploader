@@ -1,0 +1,250 @@
+[hidden] {
+    display: none !important;
+}
+
+.vue-fine-uploader-gallery-nodrop-container,
+.vue-fine-uploader-gallery-dropzone {
+    border-radius: 6px;
+    background-color: #FAFAFA;
+    max-height: 490px;
+    min-height: 310px;
+    overflow-y: hidden;
+    padding: 15px 15px 15px 5px;
+    position: relative;
+}
+
+.vue-fine-uploader-gallery-dropzone {
+    border: 2px dashed #00ABC7;
+}
+.vue-fine-uploader-gallery-dropzone-upload-icon {
+    height: 36px;
+    margin-bottom: -6px;
+    margin-right: 10px;
+    width: 36px;
+}
+
+.vue-fine-uploader-gallery-nodrop-container {
+    border: 2px solid #00ABC7;
+}
+
+.vue-fine-uploader-gallery-dropzone-active  {
+    background: #FDFDFD;
+    border: 2px solid #00ABC7;
+}
+
+.vue-fine-uploader-gallery-dropzone-content,
+.vue-fine-uploader-gallery-nodrop-content {
+    font-size: 36px;
+    left: 0;
+    opacity: 0.25;
+    position: absolute;
+    text-align: center;
+    top: 38%;
+    width: 100%;
+}
+
+.vue-fine-uploader-gallery-file-input-container {
+    background: #00ABC7;
+    border: 1px solid #37B7CC;
+    border-radius: 3px;
+    color: #FFFFFF;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 7px;
+    text-align: center;
+    /*Disabled for auto sizing*/
+    /*width: 105px;*/
+}
+.vue-fine-uploader-gallery-file-input-container:hover {
+    background: #33B6CC;
+}
+.vue-fine-uploader-gallery-file-input-container:focus {
+    outline: 1px dotted #000000;
+}
+.vue-fine-uploader-gallery-file-input-content {
+    display: inline-block;
+    margin-top: -2px;
+}
+.vue-fine-uploader-gallery-file-input-upload-icon {
+    fill: white;
+    height: 24px;
+    margin-bottom: -6px;
+    margin-right: 5px;
+    width: 24px;
+}
+
+.vue-fine-uploader-gallery-progress-bar,
+.vue-fine-uploader-gallery-total-progress-bar {
+    border-radius: 3px;
+}
+.vue-fine-uploader-gallery-progress-bar-container,
+.vue-fine-uploader-gallery-total-progress-bar-container {
+    background: #F2F2F2;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
+    position: absolute;
+}
+.vue-fine-uploader-gallery-total-progress-bar-container {
+    display: inline-block;
+    height: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 4px;
+    width: 70%;
+}
+.vue-fine-uploader-gallery-progress-bar,
+.vue-fine-uploader-gallery-total-progress-bar {
+    background: #00ABC7;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
+    height: inherit;
+}
+.vue-fine-uploader-gallery-progress-bar-container {
+    height: 15px;
+    left: 50%;
+    opacity: 0.9;
+    top: 60px;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 1;
+}
+
+.vue-fine-uploader-gallery-files {
+    clear: both;
+    list-style: none;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-left: 0;
+    padding-top: 15px;
+    /* Added for center alignment*/
+    text-align: center;
+}
+.vue-fine-uploader-gallery-files-enter {
+    opacity: 0.01;
+}
+.vue-fine-uploader-gallery-files-enter.vue-fine-uploader-gallery-files-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+.vue-fine-uploader-gallery-files-leave {
+    opacity: 1;
+}
+.vue-fine-uploader-gallery-files-leave.vue-fine-uploader-gallery-files-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}
+
+.vue-fine-uploader-gallery-file {
+    background-color: #FFFFFF;
+    border-radius: 9px;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.22);
+    display: inline-block;
+    font-size: 13px;
+    height: 165px;
+    line-height: 16px;
+    margin: 0 25px 25px 10px;
+    position: relative;
+    vertical-align: top;
+    width: 130px;
+}
+
+.vue-fine-uploader-gallery-thumbnail-container {
+    display: block;
+    height: 130px;
+    text-align: center;
+}
+.vue-fine-uploader-gallery-thumbnail {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.vue-fine-uploader-gallery-thumbnail-icon-backdrop,
+.vue-fine-uploader-gallery-upload-failed-icon,
+.vue-fine-uploader-gallery-upload-success-icon {
+    left: 50%;
+    opacity: 0.5;
+    position: absolute;
+    top: 39%;
+    transform: translate(-50%, -50%);
+}
+.vue-fine-uploader-gallery-upload-failed-icon,
+.vue-fine-uploader-gallery-upload-success-icon {
+    height: 60px;
+    width: 60px;
+    z-index: 1;
+}
+.vue-fine-uploader-gallery-upload-success-icon {
+    fill: green;
+}
+.vue-fine-uploader-gallery-upload-failed-icon {
+    fill: red;
+}
+.vue-fine-uploader-gallery-thumbnail-icon-backdrop {
+    background-color: white;
+    border-radius: 30px;
+    height: 50px;
+    width: 50px;
+}
+
+.vue-fine-uploader-gallery-file-footer {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.vue-fine-uploader-gallery-filename {
+    display: block;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.vue-fine-uploader-gallery-filesize {
+    display: block;
+    float: right;
+}
+
+.vue-fine-uploader-gallery-status {
+    font-style: italic;
+}
+
+.vue-fine-uploader-gallery-cancel-button:hover svg,
+.vue-fine-uploader-gallery-delete-button:hover svg,
+.vue-fine-uploader-gallery-pause-resume-button:hover svg,
+.vue-fine-uploader-gallery-retry-button:hover svg {
+    fill: grey;
+}
+.vue-fine-uploader-gallery-cancel-button:focus,
+.vue-fine-uploader-gallery-delete-button:focus,
+.vue-fine-uploader-gallery-pause-resume-button:focus,
+.vue-fine-uploader-gallery-retry-button:focus {
+    outline: none;
+}
+.vue-fine-uploader-gallery-cancel-button:focus svg,
+.vue-fine-uploader-gallery-delete-button:focus svg,
+.vue-fine-uploader-gallery-pause-resume-button:focus svg,
+.vue-fine-uploader-gallery-retry-button:focus svg {
+    fill: grey;
+}
+.vue-fine-uploader-gallery-cancel-button,
+.vue-fine-uploader-gallery-delete-button,
+.vue-fine-uploader-gallery-pause-resume-button,
+.vue-fine-uploader-gallery-retry-button {
+    background: transparent;
+    border: 0;
+    position: absolute;
+}
+.vue-fine-uploader-gallery-cancel-button,
+.vue-fine-uploader-gallery-delete-button {
+    right: -18px;
+    top: -12px;
+}
+.vue-fine-uploader-gallery-pause-resume-button,
+.vue-fine-uploader-gallery-retry-button {
+    left: -18px;
+    top: -12px
+}
