@@ -149,7 +149,7 @@ The example below will include a cancel button for each submitted file along wit
     },
 
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
           request: {
             endpoint: 'my/upload/endpoint'
@@ -238,7 +238,7 @@ The example below will include a delete button for each submitted file along wit
     },
 
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
           deleteFile: {
             enabled: true,
@@ -369,7 +369,7 @@ Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) lo
 
   export default {
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
             request: {
               endpoint: 'my/upload/endpoint'
@@ -417,7 +417,7 @@ Note: This assumes you have additional components or code to allow files to actu
 
   export default {
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
             request: {
               endpoint: 'my/upload/endpoint'
@@ -483,7 +483,7 @@ Note: This assumes you have additional components or code to allow files to actu
 
   export default {
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
             request: {
               endpoint: 'my/upload/endpoint'
@@ -566,7 +566,7 @@ The example below will include a pause/resume button for each submitted file alo
 
   export default {
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
           request: {
             endpoint: 'my/upload/endpoint'
@@ -658,7 +658,7 @@ The example below will include a retry button for each submitted file along with
 
   export default {
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
           request: {
             endpoint: 'my/upload/endpoint'
@@ -734,7 +734,7 @@ Note: This assumes you have additional components or code to allow files to actu
 
   export default {
     data () {
-      const uploader = new FineUploader({
+      const uploader = new FineUploaderTraditional({
         options: {
           request: {
             endpoint: 'my/upload/endpoint'
