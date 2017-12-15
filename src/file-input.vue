@@ -47,7 +47,6 @@
     beforeDestroy () {
       this._unmounted = true
     },
-
     methods: {
       _onFilesSelected (e) {
         this.uploader.methods.addFiles(e.target)

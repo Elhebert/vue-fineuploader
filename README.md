@@ -60,7 +60,52 @@ Simply `npm install vue-fineuploader@next` and see the documentation for your sp
 
 #### `<gallery />`
 
-Not implemented yet.
+Similar to the Fine Uploader UI gallery template, the `<gallery />` component lays out an uploader using all of the available [low-level components](#low-level-components). Appealing styles are provided, which can be easily overriden in your own style sheet.
+
+In the `<gallery />` component, each file is rendered as a "card". CSS transitions are used to fade a card in when a file is submitted and then fade it out again when the file is either canceled during uploading or deleted after uploading. By default, a file input element is rendered and styled to allow access to the file chooser. And, if supported by the device, a drop zone is rendered as well.
+
+##### Properties
+
+The only required property is `uploader`, which must be a Fine Uploader [wrapper class](#wrapper-classes) instance.
+
+```html
+<template>
+  <Gallery :uploader="uploader" />
+</template>
+
+<script>
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
+  import Gallery from 'vue-fineuploader/gallery'
+
+  export default {
+    components: {
+      Gallery
+    },
+    data () {
+      const uploader = new FineUploaderTraditional({
+        options: {
+          deleteFile: {
+            enabled: true,
+            endpoint: 'my/upload/endpoint'
+          },
+          request: {
+            endpoint: 'my/upload/endpoint'
+          }
+        }
+      })
+
+      return {
+        uploader
+      }
+    }
+  }
+</script>
+```
+
+##### Todos
+- Implement animation
+- Fix progress bar
+- Fix slot for content
 
 ### Low-level Components
 
@@ -93,9 +138,9 @@ The example below will include a cancel button for each submitted file along wit
 </template>
 
 <script>
-  import CancelButton from 'vue-fineuploader/components/cancel-button'
+  import CancelButton from 'vue-fineuploader/cancel-button'
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+  import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
     components: {
@@ -182,9 +227,9 @@ The example below will include a delete button for each submitted file along wit
 </template>
 
 <script>
-  import DeleteButton from 'vue-fineuploader/components/delete-button'
+  import DeleteButton from 'vue-fineuploader/delete-button'
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+  import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
     components: {
@@ -274,7 +319,7 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 </template>
 
 <script>
-  import Dropzone from 'vue-fineuploader/components/dropzone'
+  import Dropzone from 'vue-fineuploader/dropzone'
   import FineUploaderTraditional from 'fine-uploader-wrapper'
 
   export default {
@@ -320,7 +365,7 @@ Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) lo
 
 <script>
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import FileInput from 'vue-fineuploader/components/file-input'
+  import FileInput from 'vue-fineuploader/file-input'
 
   export default {
     data () {
@@ -368,7 +413,7 @@ Note: This assumes you have additional components or code to allow files to actu
 
 <script>
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import Filename from 'vue-fineuploader/components/filename'
+  import Filename from 'vue-fineuploader/filename'
 
   export default {
     data () {
@@ -434,7 +479,7 @@ Note: This assumes you have additional components or code to allow files to actu
 
 <script>
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import Filesize from 'vue-fineuploader/components/filesize'
+  import Filesize from 'vue-fineuploader/filesize'
 
   export default {
     data () {
@@ -516,8 +561,8 @@ The example below will include a pause/resume button for each submitted file alo
 
 <script>
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import PauseResumeButton from 'vue-fineuploader/components/PauseResume-button'
-  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+  import PauseResumeButton from 'vue-fineuploader/PauseResume-button'
+  import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
     data () {
@@ -608,8 +653,8 @@ The example below will include a retry button for each submitted file along with
 
 <script>
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import RetryButton from 'vue-fineuploader/components/retry-button'
-  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+  import RetryButton from 'vue-fineuploader/retry-button'
+  import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
     data () {
@@ -684,8 +729,8 @@ Note: This assumes you have additional components or code to allow files to actu
 
 <script>
   import FineUploaderTraditional from 'fine-uploader-wrapper'
-  import Status from 'vue-fineuploader/components/retry-button'
-  import Thumbnail from 'vue-fineuploader/components/thumbnail'
+  import Status from 'vue-fineuploader/retry-button'
+  import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
     data () {
@@ -723,5 +768,71 @@ Note: This assumes you have additional components or code to allow files to actu
 ```
 
 #### `<thumbnail />`
+The `<Thumbnail />` component allows you to easily render Fine Uploader generated thumbnail previews for a specific submitted file. While the thumbnail generation is in progress, a SVG "waiting" graphic will render. Of the thumbnail generation succeeds, the "waiting" graphic will be removed from the DOM and replaced with a <canvas> element containing the thumbnail preview. If thumbnail generation fails, a "not available" SVG graphic will be rendered instead.
 
-Not implemented yet
+##### Properties
+- `customResizer(resizeInfo)` - An optional function that allows you to use a custom/3rd-library to resize thumbnail images. Documented further in [Fine Uploader's `drawThumbnail` API method documentation](https://docs.fineuploader.com/api/methods.html#drawThumbnail). See the second code example below for details.
+
+- `fromServer` - Specify whether the current file was set from [initial file](https://docs.fineuploader.com/branch/master/features/session.html)
+
+- `id` - The Fine Uploader ID of the submitted file. (required)
+
+- `maxSize` - Maps directly to the [`maxSize` parameter](http://docs.fineuploader.com/branch/master/api/methods.html#drawThumbnail) of the Fine Uploader `drawThumbnail` API method. If not supplied a default value is used, which is exported as a named constant.
+
+- `uploader` - A Fine Uploader [wrapper class](#wrapper-classes). (required)
+
+Suppose you wanted to render a thumbnail for each file as new files are submitted to Fine Uploader. Your React component may look like this:
+
+Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
+
+##### Slots
+- `notAvailablePlaceholder` - A custom element to display if the thumbnail is not available.
+
+- `waitingPlaceholder` - A custom element to display while waiting for the thumbnail.
+
+Suppose you wanted to render a thumbnail for each file as new files are submitted to Fine Uploader. Your Vue component may look like this:
+
+Note: This assumes you have additional components or code to allow files to actually be submitted to Fine Uploader.
+
+```html
+<template>
+  <div v-for="file in state.submittedFiles">
+    <thumbnail :id="file" :uploader="uploader" />
+  </div>
+</template>
+
+<script>
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
+  import Thumbnail from 'vue-fineuploader/thumbnail'
+
+  export default {
+    components: {
+      Thumbnail
+    },
+    data () {
+      const uploader = new FineUploaderTraditional({
+        options: {
+          request: {
+            endpoint: 'my/upload/endpoint'
+          }
+        }
+      })
+
+      return {
+        uploader,
+        state: {
+          submittedFiles: []
+        }
+      }
+    },
+
+    mounted () {
+      this.uploader.on('submitted', id => {
+        const submittedFiles = this.state.submittedFiles
+        submittedFiles.push(id)
+        this.$set(this.state, 'submittedFiles', submittedFiles)
+      })
+    }
+  }
+</script>
+```
