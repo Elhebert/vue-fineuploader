@@ -4,7 +4,9 @@
       <slot>Upload File</slot>
       <input type="file"
              @change="_onFilesSelected"
-             :multiple="multiple"/>
+             :multiple="multiple"
+             :accept="accept"
+             :required="required"/>
     </label>
   </div>
 </template>
@@ -32,6 +34,14 @@
         type: Boolean,
         default: false
       },
+      required: {
+        type: Boolean,
+        default: false
+      },
+      accept: {
+        type: String,
+        default: ''
+      },
       uploader: {
         type: Object,
         required: true
@@ -47,6 +57,7 @@
     beforeDestroy () {
       this._unmounted = true
     },
+
     methods: {
       _onFilesSelected (e) {
         this.uploader.methods.addFiles(e.target)
