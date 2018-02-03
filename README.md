@@ -139,7 +139,7 @@ The example below will include a cancel button for each submitted file along wit
 
 <script>
   import CancelButton from 'vue-fineuploader/cancel-button'
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
@@ -228,7 +228,7 @@ The example below will include a delete button for each submitted file along wit
 
 <script>
   import DeleteButton from 'vue-fineuploader/delete-button'
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import Thumbnail from 'vue-fineuploader/thumbnail'
 
   export default {
@@ -312,7 +312,7 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 
 ```html
 <template>
-  <dropzone :style="{ border: '1px dotted', height: 200, width: 200 }"
+  <dropzone :style="{ border: '1px dotted', height: '200px', width: '200px' }"
             :uploader="uploader">
     <span>Drop Files Here</span>
   </Dropzone>
@@ -320,7 +320,7 @@ A _very_ simple but completely functional and effective use of the `<dropzone />
 
 <script>
   import Dropzone from 'vue-fineuploader/dropzone'
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
 
   export default {
     components: {
@@ -364,7 +364,7 @@ Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) lo
 </template>
 
 <script>
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import FileInput from 'vue-fineuploader/file-input'
 
   export default {
@@ -412,7 +412,7 @@ Note: This assumes you have additional components or code to allow files to actu
 </template>
 
 <script>
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import Filename from 'vue-fineuploader/filename'
 
   export default {
@@ -478,7 +478,7 @@ Note: This assumes you have additional components or code to allow files to actu
 </template>
 
 <script>
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import Filesize from 'vue-fineuploader/filesize'
 
   export default {
@@ -560,7 +560,7 @@ The example below will include a pause/resume button for each submitted file alo
 </template>
 
 <script>
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import PauseResumeButton from 'vue-fineuploader/PauseResume-button'
   import Thumbnail from 'vue-fineuploader/thumbnail'
 
@@ -652,7 +652,7 @@ The example below will include a retry button for each submitted file along with
 </template>
 
 <script>
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import RetryButton from 'vue-fineuploader/retry-button'
   import Thumbnail from 'vue-fineuploader/thumbnail'
 
@@ -728,7 +728,7 @@ Note: This assumes you have additional components or code to allow files to actu
 </template>
 
 <script>
-  import FineUploaderTraditional from 'fine-uploader-wrapper'
+  import FineUploaderTraditional from 'fine-uploader-wrappers'
   import Status from 'vue-fineuploader/retry-button'
   import Thumbnail from 'vue-fineuploader/thumbnail'
 
