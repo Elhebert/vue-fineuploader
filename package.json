@@ -27,6 +27,8 @@
     "widget"
   ],
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -35,8 +37,7 @@
   },
   "dependencies": {
     "fine-uploader": "^5.16.2",
-    "fine-uploader-wrappers": "^1.0.1",
-    "vue": "^2.5.17"
+    "fine-uploader-wrappers": "^1.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.1",
@@ -47,6 +48,7 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
+    "vue": "^2.5.17",
     "vue-template-compiler": "^2.5.17"
   }
 }

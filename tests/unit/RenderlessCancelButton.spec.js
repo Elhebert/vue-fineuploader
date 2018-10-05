@@ -1,7 +1,7 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import CancelButton from '@/renderless/CancelButton.vue'
 import FineUploader from 'fine-uploader-wrappers'
-import { status as STATUSES } from 'fine-uploader/lib/core/all'
+import { status } from 'fine-uploader/lib/core/all'
 
 describe('RenderlessCancelButton.vue', () => {
   let wrapper
@@ -14,7 +14,7 @@ describe('RenderlessCancelButton.vue', () => {
     uploader.on('submitted', done)
     uploader.methods.addFiles(sampleBlob)
 
-    wrapper = mount(CancelButton, {
+    wrapper = shallowMount(CancelButton, {
       propsData: { id: 0, uploader },
       scopedSlots: { default: slots => slots },
     })
@@ -28,7 +28,7 @@ describe('RenderlessCancelButton.vue', () => {
     wrapper.vm.onClick({ preventDefault: jest.fn() })
 
     wrapper.vm.$nextTick(() => {
-      expect(uploader.methods.getUploads()[0].status).toMatch(STATUSES.CANCELED)
+      expect(uploader.methods.getUploads()[0].status).toMatch(status.CANCELED)
       expect(wrapper.vm.cancelable).toBe(false)
 
       done()

@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Filename from '@/renderless/Filename.vue'
 import FineUploader from 'fine-uploader-wrappers'
 
@@ -14,7 +14,7 @@ describe('RenderlessFilename.vue', () => {
     uploader.on('submitted', done)
     uploader.methods.addFiles(sampleBlobWrapper)
 
-    wrapper = mount(Filename, {
+    wrapper = shallowMount(Filename, {
       propsData: { id: 0, uploader },
       scopedSlots: { default: object => object },
     })

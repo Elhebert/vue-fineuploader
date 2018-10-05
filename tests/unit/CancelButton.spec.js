@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
 import CancelButton from '@/CancelButton.vue'
 import FineUploader from 'fine-uploader-wrappers'
-import { status as STATUSES } from 'fine-uploader/lib/core/all'
+import { status } from 'fine-uploader/lib/core/all'
 
 describe('CancelButton.vue', () => {
   let wrapper
@@ -29,7 +29,7 @@ describe('CancelButton.vue', () => {
     wrapper.trigger('click')
 
     wrapper.vm.$nextTick(() => {
-      expect(uploader.methods.getUploads()[0].status).toMatch(STATUSES.CANCELED)
+      expect(uploader.methods.getUploads()[0].status).toMatch(status.CANCELED)
 
       done()
     })

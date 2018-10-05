@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import PauseResumeButton from '@/renderless/PauseResumeButton.vue'
 import FineUploader from 'fine-uploader-wrappers'
-import { status as STATUSES } from 'fine-uploader/lib/core/all'
+import { status } from 'fine-uploader/lib/core/all'
 
 describe('RenderlessPauseResumeButton.vue', () => {
   let wrapper
@@ -29,14 +29,14 @@ describe('RenderlessPauseResumeButton.vue', () => {
 
     expect(wrapper.vm.pausable).toBe(true)
 
-    wrapper.vm.onStatusChange(0, null, STATUSES.DELETED)
+    wrapper.vm.onStatusChange(0, null, status.DELETED)
 
     expect(wrapper.vm.pausable).toBe(false)
   })
 
   it('allows a paused upload to be resumed and then paused again', () => {
     wrapper.vm.onUploadChunk(0, null, { partIndex: 7 })
-    wrapper.vm.onStatusChange(0, null, STATUSES.PAUSED)
+    wrapper.vm.onStatusChange(0, null, status.PAUSED)
 
     expect(wrapper.vm.pausable).toBe(false)
     expect(wrapper.vm.resumable).toBe(true)
@@ -45,7 +45,7 @@ describe('RenderlessPauseResumeButton.vue', () => {
     wrapper.vm.onClick({ preventDefault: jest.fn() })
     expect(uploader.methods.continueUpload).toHaveBeenCalledWith(0)
 
-    wrapper.vm.onStatusChange(0, null, STATUSES.UPLOADING)
+    wrapper.vm.onStatusChange(0, null, status.UPLOADING)
 
     expect(wrapper.vm.pausable).toBe(true)
     expect(wrapper.vm.resumable).toBe(false)
@@ -54,7 +54,7 @@ describe('RenderlessPauseResumeButton.vue', () => {
     wrapper.vm.onClick({ preventDefault: jest.fn() })
     expect(uploader.methods.pauseUpload).toHaveBeenCalledWith(0)
 
-    wrapper.vm.onStatusChange(0, null, STATUSES.PAUSED)
+    wrapper.vm.onStatusChange(0, null, status.PAUSED)
 
     expect(wrapper.vm.pausable).toBe(false)
     expect(wrapper.vm.resumable).toBe(true)

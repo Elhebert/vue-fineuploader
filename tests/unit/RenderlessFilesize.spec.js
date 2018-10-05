@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import Filesize from '@/renderless/Filesize.vue'
 import FineUploader from 'fine-uploader-wrappers'
 
@@ -25,7 +25,7 @@ describe('RenderlessFilesize.vue', () => {
     const uploader = new FineUploader({ options: { autoUpload: false } })
     uploader.methods.addFiles(sampleBlobWrapper)
 
-    const wrapper = mount(Filesize, {
+    const wrapper = shallowMount(Filesize, {
       propsData: { id: 0, uploader },
       scopedSlots: { default: object => object },
     })
@@ -51,7 +51,7 @@ describe('RenderlessFilesize.vue', () => {
     ]
 
     expectedSizes.forEach((expectedSize, id) => {
-      const wrapper = mount(Filesize, {
+      const wrapper = shallowMount(Filesize, {
         propsData: { id, uploader },
         scopedSlots: { default: object => object },
       })
@@ -72,7 +72,7 @@ describe('RenderlessFilesize.vue', () => {
     })
     uploader.methods.addFiles({ type: 'fakeBlob' })
 
-    const wrapper = mount(Filesize, {
+    const wrapper = shallowMount(Filesize, {
       propsData: { id: 0, uploader },
       scopedSlots: { default: object => object },
     })
