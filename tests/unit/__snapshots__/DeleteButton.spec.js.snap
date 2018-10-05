@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteButton.vue disabled the button while the delete is in progress 1`] = `<button disabled="disabled" type="button">Delete</button>`;
+
+exports[`DeleteButton.vue disables the button if requested when the file can no longer be deleted 1`] = `<button disabled="disabled" type="button">Delete</button>`;
+
+exports[`DeleteButton.vue removes the button if the file can no longer be deleted 1`] = ``;
+
+exports[`DeleteButton.vue renders the button for a successfully uploaded file 1`] = `<button type="button">Delete</button>`;
