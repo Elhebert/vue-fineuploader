@@ -1,15 +1,16 @@
 {
-  "name": "vue-fineuploader",
-  "version": "2.0.0-rc.9",
+  "name": "vue-fine-uploader",
+  "version": "3.0.0-alpha.0",
+  "private": true,
   "license": "MIT",
   "description": "VueJS 2 components for using Fine Uploader in a Vue based project.",
-  "homepage": "https://github.com/Elhebert/vue-fineuploader#readme",
+  "homepage": "https://github.com/FineUploader/vue-fine-uploader#readme",
   "repository": {
-    "url": "https://github.com/Elhebert/vue-fineuploader.git",
+    "url": "https://github.com/FineUploader/vue-fine-uploader.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/Elhebert/vue-fineuploader/issues"
+    "url": "https://github.com/FineUploader/vue-fine-uploader/issues"
   },
   "author": {
     "name": "Dieter Stinglhamber",
@@ -25,29 +26,27 @@
     "upload",
     "widget"
   ],
-  "main": "dropzone.vue",
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
   "peerDependencies": {
-    "vue": "2.x.x"
+    "vue": "^2.5"
   },
   "dependencies": {
-    "fine-uploader": ">=5.11.10 <6.0.0",
+    "fine-uploader": "^5.16.2",
     "fine-uploader-wrappers": "^1.0.1",
-    "lodash.isplainobject": "^4.0.6"
+    "vue": "^2.5.17"
   },
   "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "eslint": "^3.12.2",
-    "eslint-config-standard": "^6.1.0",
-    "eslint-plugin-html": "^3.0.0",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1"
-  },
-  "engines": {
-    "node": ">=5.0.0"
-  },
-  "scripts": {
-    "build": "rm -rf lib && mkdir -p lib && rsync -av src/ lib",
-    "push-to-npm": "cp package.json README.md LICENSE lib && (cd lib ; npm publish)",
-    "lint": "eslint ./src --ext .js,.vue --cache"
+    "@vue/cli-plugin-babel": "^3.0.1",
+    "@vue/cli-plugin-eslint": "^3.0.1",
+    "@vue/cli-plugin-unit-jest": "^3.0.1",
+    "@vue/cli-service": "^3.0.1",
+    "@vue/eslint-config-prettier": "^3.0.1",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^23.0.1",
+    "vue-template-compiler": "^2.5.17"
   }
 }
