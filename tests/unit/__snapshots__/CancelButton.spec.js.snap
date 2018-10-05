@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CancelButton.vue disables the button if requested when the file can no longer be canceled 1`] = `
+<button type="button" disabled="disabled">
+  Cancel
+</button>
+`;
+
+exports[`CancelButton.vue removes the button by default if the file can no longer be canceled 1`] = ``;
+
+exports[`CancelButton.vue renders the button for a submitted file 1`] = `
+<button type="button">
+  Cancel
+</button>
+`;
