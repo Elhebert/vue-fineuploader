@@ -1,6 +1,6 @@
 <template>
-  <renderless-delete-button 
-    :id="id" 
+  <renderless-delete-button
+    :id="id"
     :uploader="uploader">
     <button
       v-if="!onlyRenderIfDeletable || deletable || deleting"
@@ -9,7 +9,7 @@
       type="button"
       v-on="buttonEvents"
     >
-      <slot>Delete</slot>
+      Delete
     </button>
   </renderless-delete-button>
 </template>
