@@ -29,6 +29,7 @@ describe('RenderlessCancelButton.vue', () => {
 
     wrapper.vm.$nextTick(() => {
       expect(uploader.methods.getUploads()[0].status).toMatch(STATUSES.CANCELED)
+      expect(wrapper.vm.cancelable).toBe(false)
 
       done()
     })

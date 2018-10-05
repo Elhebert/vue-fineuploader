@@ -12,18 +12,15 @@ export default {
   },
 
   data: () => ({
-    cancelable: true,
-    unmounted: false,
-    statuses: null,
-    initialStatus: null,
+    cancelable: false,
+    unmounting: false,
   }),
 
   created() {
-    this.statuses = this.uploader.qq.status
-    this.initialStatus = this.uploader.methods.getUploads({
+    const initialStatus = this.uploader.methods.getUploads({
       id: this.id,
     }).status
-    this.cancelable = this.isCancelableStatus(this.initialStatus)
+    this.cancelable = this.isCancelableStatus(initialStatus)
   },
 
   mounted() {
@@ -31,28 +28,28 @@ export default {
   },
 
   beforeDestroy() {
-    this.unmounted = true
+    this.unmounting = true
     this.unregisterStatusChangeHandler()
   },
 
   methods: {
     onStatusChange(id, oldStatus, newStatus) {
-      if (id !== this.id || this.unmounted) {
-        return
-      }
-
-      if (this.isCancelableStatus(newStatus) === !this.cancelable) {
-        this.cancelable = this.isCancelableStatus(newStatus)
-
+      if (!this.isCurrentFile(id) || this.unmounting) {
         return
       }
 
       if (
-        newStatus === this.statuses.DELETED ||
-        newStatus === this.statuses.CANCELED
+        newStatus === this.uploader.qq.status.DELETED ||
+        newStatus === this.uploader.qq.status.CANCELED
       ) {
         this.unregisterStatusChangeHandler()
       }
+
+      this.cancelable = this.isCancelableStatus(newStatus)
+    },
+
+    isCurrentFile(id) {
+      return this.id === id
     },
 
     onClick(event) {
@@ -70,13 +67,13 @@ export default {
     isCancelableStatus(status) {
       return (
         [
-          this.statuses.DELETE_FAILED,
-          this.statuses.PAUSED,
-          this.statuses.QUEUED,
-          this.statuses.RETRYING_UPLOAD,
-          this.statuses.SUBMITTED,
-          this.statuses.UPLOADING,
-          this.statuses.UPLOAD_FAILED,
+          this.uploader.qq.status.DELETE_FAILED,
+          this.uploader.qq.status.PAUSED,
+          this.uploader.qq.status.QUEUED,
+          this.uploader.qq.status.RETRYING_UPLOAD,
+          this.uploader.qq.status.SUBMITTED,
+          this.uploader.qq.status.UPLOADING,
+          this.uploader.qq.status.UPLOAD_FAILED,
         ].indexOf(status) >= 0
       )
     },
