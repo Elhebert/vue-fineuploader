@@ -14,7 +14,7 @@ export default {
   },
 
   data: () => ({
-    size: '',
+    size: 0,
     onUpload: null,
   }),
 
@@ -35,9 +35,11 @@ export default {
 
       return formatSizeAndUnits
     },
+  },
 
-    hasSize() {
-      return !(this.size == null || this.size < 0)
+  methods: {
+    isCurrentFile(id) {
+      return this.id === id
     },
   },
 
@@ -48,7 +50,7 @@ export default {
 
     if (scalingOption && scalingOption.sizes.length) {
       this.onUpload = id => {
-        if (id !== this.id) {
+        if (!this.isCurrentFile(id)) {
           return
         }
 
@@ -69,7 +71,6 @@ export default {
     return this.$scopedSlots.default({
       size: this.formatted.size,
       unit: this.formatted.unit,
-      hasSize: this.hasSize,
     })
   },
 }
