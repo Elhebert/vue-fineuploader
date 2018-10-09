@@ -27,10 +27,14 @@ export default {
       this.uploader.methods.setName = (id, newName) => {
         oldSetName.call(this.uploader.methods, id, newName)
 
-        if (id === this.id) {
+        if (this.isCurrentFile(id)) {
           this.filename = newName
         }
       }
+    },
+
+    isCurrentFile(id) {
+      return this.id === id
     },
   },
 
