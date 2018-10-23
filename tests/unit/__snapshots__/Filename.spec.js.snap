@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filename.vue renders initial filename 1`] = `<span>test</span>`;
+
+exports[`Filename.vue updates filename on setName 1`] = `<span>new-name</span>`;
