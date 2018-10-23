@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filesize.vue renders an empty filesize component if size is not known initially 1`] = ``;
+
+exports[`Filesize.vue renders file size at upload time for scaled blobs 1`] = ``;
+
+exports[`Filesize.vue renders file size at upload time for scaled blobs 2`] = `<span>1 B</span>`;
+
+exports[`Filesize.vue renders formatted file size for various sized files 1`] = `<span>1.10 KB</span>`;
+
+exports[`Filesize.vue renders formatted file size for various sized files 2`] = `<span>1.10 MB</span>`;
+
+exports[`Filesize.vue renders formatted file size for various sized files 3`] = `<span>1.10 GB</span>`;
+
+exports[`Filesize.vue renders formatted file size for various sized files 4`] = `<span>1.10 TB</span>`;

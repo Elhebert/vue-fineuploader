@@ -4,8 +4,8 @@
     :uploader="uploader"
   >
     <span
-      v-if="hasSize"
-      slot-scope="{ size, unit, hasSize }"
+      slot-scope="{ size, unit }"
+      v-if="size !== null && size >= 0"
     >{{ size }} {{ units[unit] }}</span>
   </renderless-filesize>
 </template>
