@@ -15,18 +15,16 @@ export default {
     deletable: false,
     deleting: false,
     unmounted: false,
-    statuses: null,
-    initialStatus: null,
   }),
 
   created() {
-    this.statuses = this.uploader.qq.status
-    this.initialStatus = this.uploader.methods.getUploads({
+    this.uploader.qq.status = this.uploader.qq.status
+    const initialStatus = this.uploader.methods.getUploads({
       id: this.id,
     }).status
 
-    this.deletable = this.isDeletableStatus(this.initialStatus)
-    this.deleting = this.initialStatus === this.statuses.DELETING
+    this.deletable = this.isDeletableStatus(initialStatus)
+    this.deleting = initialStatus === this.uploader.qq.status.DELETING
   },
 
   mounted() {
@@ -40,14 +38,13 @@ export default {
 
   methods: {
     onStatusChange(id, oldStatus, newStatus) {
-      if (id !== this.id || this.unmounted) {
+      if (!this.isCurrentFile(id) || this.unmounted) {
         return
       }
 
       if (
         !this.isDeletableStatus(newStatus) &&
-        newStatus !== this.statuses.DELETING &&
-        this.deletable
+        newStatus !== this.uploader.qq.status.DELETING
       ) {
         this.deletable = false
         this.deleting = false
@@ -56,18 +53,20 @@ export default {
         return
       }
 
-      if (this.isDeletableStatus(newStatus) && !this.deletable) {
+      if (this.isDeletableStatus(newStatus)) {
         this.deletable = true
         this.deleting = false
 
         return
       }
 
-      if (newStatus === this.statuses.DELETING && !this.deleting) {
+      if (newStatus === this.uploader.qq.status.DELETING) {
         this.deleting = true
-
-        return
       }
+    },
+
+    isCurrentFile(id) {
+      return this.id === id
     },
 
     onClick(event) {
@@ -84,9 +83,10 @@ export default {
 
     isDeletableStatus(statuses) {
       return (
-        [this.statuses.DELETE_FAILED, this.statuses.UPLOAD_SUCCESSFUL].indexOf(
-          statuses,
-        ) >= 0
+        [
+          this.uploader.qq.status.DELETE_FAILED,
+          this.uploader.qq.status.UPLOAD_SUCCESSFUL,
+        ].indexOf(statuses) >= 0
       )
     },
   },

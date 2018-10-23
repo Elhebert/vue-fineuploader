@@ -31,7 +31,7 @@ describe('RenderlessDeleteButton.vue', () => {
     expect(uploader.methods.deleteFile).toHaveBeenCalled()
   })
 
-  it('makes the files undeletable by default if the file can no longer be deleted', () => {
+  it('makes the files undeletable if the file can no longer be deleted', () => {
     wrapper.vm.onStatusChange(0, null, status.DELETED)
 
     expect(wrapper.vm.deleting).toBe(false)
