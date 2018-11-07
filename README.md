@@ -382,7 +382,7 @@ Note: This assumes you have [the Ionicons CSS file](http://ionicons.com/#cdn) lo
       }
     },
 
-    component: {
+    components: {
       FileInput
     }
   }
@@ -433,7 +433,7 @@ Note: This assumes you have additional components or code to allow files to actu
       }
     },
 
-    component: {
+    components: {
       Filename
     },
 
