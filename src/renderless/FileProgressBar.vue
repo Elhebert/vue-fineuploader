@@ -69,7 +69,7 @@ export default {
 
     isUploading(status) {
       return status === this.uploader.qq.status.UPLOADING
-    }
+    },
   },
 
   render() {

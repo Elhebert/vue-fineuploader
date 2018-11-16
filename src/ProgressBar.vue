@@ -5,8 +5,8 @@
     :uploader="uploader"
   >
     <div
-      :hidden="!uploading && hidesWhenNotUploading"
       slot-scope="{ uploading, progress }"
+      :hidden="!uploading && hidesWhenNotUploading"
       :aria-valuenow="progress"
       :style="{ 'width': `${progress}%` }"
       aria-valuemax="100"
@@ -20,6 +20,10 @@ import RenderlessFileProgressBar from './renderless/FileProgressBar'
 import RenderlessTotalProgressBar from './renderless/TotalProgressBar'
 
 export default {
+  components: {
+    RenderlessFileProgressBar,
+    RenderlessTotalProgressBar,
+  },
   props: {
     id: {
       type: Number,
@@ -35,14 +39,11 @@ export default {
     },
   },
 
-  components: {
-    RenderlessFileProgressBar,
-    RenderlessTotalProgressBar
-  },
-
   computed: {
     progressBar() {
-      return this.id === null ? 'renderless-total-progress-bar' : 'renderless-file-progress-bar'
+      return this.id === null
+        ? 'renderless-total-progress-bar'
+        : 'renderless-file-progress-bar'
     },
   },
 }

@@ -37,12 +37,6 @@ export default {
     },
   },
 
-  methods: {
-    isCurrentFile(id) {
-      return this.id === id
-    },
-  },
-
   created() {
     this.size = this.uploader.methods.getSize(this.id)
 
@@ -65,6 +59,12 @@ export default {
 
   beforeDestroy() {
     this.onUpload && this.uploader.off('upload', this.onUpload)
+  },
+
+  methods: {
+    isCurrentFile(id) {
+      return this.id === id
+    },
   },
 
   render() {

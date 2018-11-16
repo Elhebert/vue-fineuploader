@@ -103,11 +103,7 @@ export default {
     },
 
     onResume(id) {
-      if (
-        id !== this.id ||
-        this.atLeastOneChunkUploaded ||
-        this.unmounted
-      ) {
+      if (id !== this.id || this.atLeastOneChunkUploaded || this.unmounted) {
         return
       }
 

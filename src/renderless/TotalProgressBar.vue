@@ -30,7 +30,10 @@ export default {
         return
       }
 
-      if (this.hasUploadEnded(newStatus) && !this.uploader.methods.getInProgress()) {
+      if (
+        this.hasUploadEnded(newStatus) &&
+        !this.uploader.methods.getInProgress()
+      ) {
         this.uploading = false
 
         return

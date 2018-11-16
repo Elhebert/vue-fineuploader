@@ -14,7 +14,6 @@ describe('ProgressBar.vue', () => {
 
     expect(wrapper.attributes().hidden).toBeDefined()
     expect(wrapper).toMatchSnapshot()
-
   })
 
   it('shows the file progress bar before uploading start if specified', () => {
@@ -93,13 +92,21 @@ describe('ProgressBar.vue', () => {
     const renderless = wrapper.vm.$children[0]
 
     // uploading
-    renderless.onStatusChange(0, uploader.qq.status.QUEUED, uploader.qq.status.UPLOADING)
+    renderless.onStatusChange(
+      0,
+      uploader.qq.status.QUEUED,
+      uploader.qq.status.UPLOADING,
+    )
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.attributes().hidden).toBeUndefined()
 
     // done uploading
-    renderless.onStatusChange(0, uploader.qq.status.UPLOADING, uploader.qq.status.UPLOAD_SUCCESSFUL)
+    renderless.onStatusChange(
+      0,
+      uploader.qq.status.UPLOADING,
+      uploader.qq.status.UPLOAD_SUCCESSFUL,
+    )
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.attributes().hidden).toBeDefined()
@@ -114,14 +121,22 @@ describe('ProgressBar.vue', () => {
 
     // uploading
     uploader.methods['getInProgress'] = jest.fn(() => 1)
-    renderless.onStatusChange(0, uploader.qq.status.QUEUED, uploader.qq.status.UPLOADING)
+    renderless.onStatusChange(
+      0,
+      uploader.qq.status.QUEUED,
+      uploader.qq.status.UPLOADING,
+    )
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.attributes().hidden).toBeUndefined()
 
     // done uploading
     uploader.methods['getInProgress'] = jest.fn(() => 0)
-    renderless.onStatusChange(0, uploader.qq.status.UPLOADING, uploader.qq.status.UPLOAD_SUCCESSFUL)
+    renderless.onStatusChange(
+      0,
+      uploader.qq.status.UPLOADING,
+      uploader.qq.status.UPLOAD_SUCCESSFUL,
+    )
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.attributes().hidden).toBeUndefined()
@@ -135,13 +150,21 @@ describe('ProgressBar.vue', () => {
     const renderless = wrapper.vm.$children[0]
 
     // uploading
-    renderless.onStatusChange(0, uploader.qq.status.QUEUED, uploader.qq.status.UPLOADING)
+    renderless.onStatusChange(
+      0,
+      uploader.qq.status.QUEUED,
+      uploader.qq.status.UPLOADING,
+    )
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.attributes().hidden).toBeUndefined()
 
     // done uploading
-    renderless.onStatusChange(0, uploader.qq.status.UPLOADING, uploader.qq.status.UPLOAD_SUCCESSFUL)
+    renderless.onStatusChange(
+      0,
+      uploader.qq.status.UPLOADING,
+      uploader.qq.status.UPLOAD_SUCCESSFUL,
+    )
 
     expect(wrapper).toMatchSnapshot()
     expect(wrapper.attributes().hidden).toBeUndefined()
