@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PauseResumeButton.vue disables the button, if requested, when the upload is no longer actionable 1`] = `<button>Pause</button>`;
+
+exports[`PauseResumeButton.vue disables the button, if requested, when the upload is no longer actionable 2`] = `<button disabled="disabled">Pause</button>`;
+
+exports[`PauseResumeButton.vue doesn't render the button until the first chunk has been uploaded 1`] = ``;
+
+exports[`PauseResumeButton.vue doesn't render the button until the first chunk has been uploaded 2`] = `<button>Pause</button>`;
+
+exports[`PauseResumeButton.vue removes the pause button when the upload is no longer actionable 1`] = `<button>Pause</button>`;
+
+exports[`PauseResumeButton.vue removes the pause button when the upload is no longer actionable 2`] = ``;
