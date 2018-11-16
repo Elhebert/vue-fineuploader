@@ -20,29 +20,15 @@ export default {
     pausable: false,
     resumable: false,
     unmounted: false,
-    statuses: null,
     initialStatus: null,
   }),
 
-  computed: {
-    buttonClassName() {
-      return this.resumable
-        ? 'fine-uploader-resume-button'
-        : 'fine-uploader-pause-button'
-    },
-
-    buttonLabel() {
-      return this.resumable ? 'resume' : 'pause'
-    },
-  },
-
   created() {
-    this.statuses = this.uploader.qq.status
     this.initialStatus = this.uploader.methods.getUploads({
       id: this.id,
     }).status
-    this.pausable = this.initialStatus === this.statuses.UPLOADING
-    this.resumable = this.initialStatus === this.statuses.PAUSED
+    this.pausable = this.initialStatus === this.uploader.qq.status.UPLOADING
+    this.resumable = this.initialStatus === this.uploader.qq.status.PAUSED
   },
 
   mounted() {
@@ -60,11 +46,11 @@ export default {
 
   methods: {
     isPausable(status) {
-      return status === this.statuses.UPLOADING
+      return status === this.uploader.qq.status.UPLOADING
     },
 
     isResumable(status) {
-      return status === this.statuses.PAUSED
+      return status === this.uploader.qq.status.PAUSED
     },
 
     onStatusChange(id, oldStatus, newStatus) {
@@ -78,9 +64,9 @@ export default {
       this.resumable = resumable
 
       if (
-        newStatus === this.statuses.DELETED ||
-        newStatus === this.statuses.CANCELED ||
-        newStatus === this.statuses.UPLOAD_SUCCESSFUL
+        newStatus === this.uploader.qq.status.DELETED ||
+        newStatus === this.uploader.qq.status.CANCELED ||
+        newStatus === this.uploader.qq.status.UPLOAD_SUCCESSFUL
       ) {
         this.unregisterOnResumeHandler()
         this.unregisterOnUploadChunkHandler()
@@ -100,26 +86,34 @@ export default {
 
     onUploadChunk(id, name, chunkData) {
       if (
-        id === this.id &&
-        this.allowPauseOnlyAfterFirstChunk &&
-        !this.unmounted
+        id !== this.id ||
+        !this.allowPauseOnlyAfterFirstChunk ||
+        this.unmounted
       ) {
-        if (chunkData.partIndex > 0 && !this.pausable) {
-          this.pausable = true
-          this.resumable = false
-        } else if (chunkData.partIndex === 0 && this.pausable) {
-          this.pausable = false
-          this.resumable = false
-        }
+        return
+      }
+
+      if (chunkData.partIndex > 0 && !this.pausable) {
+        this.pausable = true
+        this.resumable = false
+      } else if (chunkData.partIndex === 0 && this.pausable) {
+        this.pausable = false
+        this.resumable = false
       }
     },
 
     onResume(id) {
-      if (id === this.id && !this.unmounted && !this.atLeastOneChunkUploaded) {
-        this.atLeastOneChunkUploaded = true
-        this.pausable = true
-        this.resumable = false
+      if (
+        id !== this.id ||
+        this.atLeastOneChunkUploaded ||
+        this.unmounted
+      ) {
+        return
       }
+
+      this.atLeastOneChunkUploaded = true
+      this.pausable = true
+      this.resumable = false
     },
 
     unregisterOnResumeHandler() {

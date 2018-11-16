@@ -40,17 +40,5 @@ export default {
       required: true,
     },
   },
-
-  computed: {
-    buttonClassName() {
-      return this.resumable
-        ? 'fine-uploader-resume-button'
-        : 'fine-uploader-pause-button'
-    },
-
-    buttonLabel() {
-      return this.resumable ? 'resume' : 'pause'
-    },
-  },
 }
 </script>
