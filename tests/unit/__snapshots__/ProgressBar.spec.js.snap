@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar.vue hides file progress bar after all upload is complete 1`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue hides file progress bar after all upload is complete 2`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;" hidden="hidden"></div>`;
+
+exports[`ProgressBar.vue hides the progress bar by default 1`] = `<div hidden="hidden" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue hides the progress bar by default 2`] = `<div hidden="hidden" aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue hides total progress bar after all uploads are complete 1`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue hides total progress bar after all uploads are complete 2`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;" hidden="hidden"></div>`;
+
+exports[`ProgressBar.vue show the file progress if an ID is supplied 1`] = `<div hidden="hidden" aria-valuenow="10" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 10%;"></div>`;
+
+exports[`ProgressBar.vue show the total progress if no ID is supplied 1`] = `<div hidden="hidden" aria-valuenow="10" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 10%;"></div>`;
+
+exports[`ProgressBar.vue shows file progress bar after all upload is complete if requested 1`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue shows file progress bar after all upload is complete if requested 2`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue shows the file progress bar before uploading start if specified 1`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue shows the total progress bar before uploading start if specified 1`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue shows total progress bar after all uploads are complete if requested 1`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
+
+exports[`ProgressBar.vue shows total progress bar after all uploads are complete if requested 2`] = `<div aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" role="progressbar" style="width: 0%;"></div>`;
