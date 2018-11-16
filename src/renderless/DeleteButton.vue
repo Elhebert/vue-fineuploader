@@ -18,7 +18,6 @@ export default {
   }),
 
   created() {
-    this.uploader.qq.status = this.uploader.qq.status
     const initialStatus = this.uploader.methods.getUploads({
       id: this.id,
     }).status
