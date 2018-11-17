@@ -3,7 +3,7 @@ import PauseResumeButton from '@/renderless/PauseResumeButton.vue'
 import FineUploader from 'fine-uploader-wrappers'
 import { status } from 'fine-uploader/lib/core/all'
 
-describe('RenderlessPauseResumeButton.vue', () => {
+describe('renderless/PauseResumeButton.vue', () => {
   let wrapper
   let uploader
 

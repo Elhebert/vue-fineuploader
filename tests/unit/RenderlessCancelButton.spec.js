@@ -3,7 +3,7 @@ import CancelButton from '@/renderless/CancelButton.vue'
 import FineUploader from 'fine-uploader-wrappers'
 import { status } from 'fine-uploader/lib/core/all'
 
-describe('RenderlessCancelButton.vue', () => {
+describe('renderless/CancelButton.vue', () => {
   let wrapper
   let uploader
 

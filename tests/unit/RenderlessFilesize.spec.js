@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import Filesize from '@/renderless/Filesize.vue'
 import FineUploader from 'fine-uploader-wrappers'
 
-describe('RenderlessFilesize.vue', () => {
+describe('renderless/Filesize.vue', () => {
   const sampleBlob = new Blob(['hi!'], { type: 'text/plain' })
   const sampleBlobWrapper = { blob: sampleBlob, name: 'test' }
   const nativeObjectToString = Object.prototype.toString

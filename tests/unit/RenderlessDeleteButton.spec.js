@@ -3,7 +3,7 @@ import DeleteButton from '@/renderless/DeleteButton.vue'
 import FineUploader from 'fine-uploader-wrappers'
 import { status } from 'fine-uploader/lib/core/all'
 
-describe('RenderlessDeleteButton.vue', () => {
+describe('renderless/DeleteButton.vue', () => {
   let wrapper
   let uploader
 

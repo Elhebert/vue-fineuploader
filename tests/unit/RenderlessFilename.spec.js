@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import Filename from '@/renderless/Filename.vue'
 import FineUploader from 'fine-uploader-wrappers'
 
-describe('RenderlessFilename.vue', () => {
+describe('renderless/Filename.vue', () => {
   let uploader
   let wrapper
 
