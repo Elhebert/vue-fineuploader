@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Status.vue render nothing for a different file 1`] = `<span></span>`;
+
+exports[`Status.vue render nothing for an untracked status value 1`] = `<span></span>`;
+
+exports[`Status.vue renders the status for the tracked file 1`] = `<span>Deleting...</span>`;
