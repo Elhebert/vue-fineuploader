@@ -5,13 +5,13 @@ export default {
       type: Number,
       required: true,
     },
-    allowPauseOnlyAfterFirstChunk: {
-      type: Boolean,
-      default: true,
-    },
     uploader: {
       type: Object,
       required: true,
+    },
+    allowPauseOnlyAfterFirstChunk: {
+      type: Boolean,
+      default: true,
     },
   },
 

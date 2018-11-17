@@ -1,7 +1,8 @@
 <template>
   <renderless-delete-button
     :id="id"
-    :uploader="uploader">
+    :uploader="uploader"
+   >
     <button
       v-if="!onlyRenderIfDeletable || deletable || deleting"
       slot-scope="{ deleting, deletable, buttonEvents }"

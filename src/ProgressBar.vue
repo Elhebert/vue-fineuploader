@@ -11,7 +11,8 @@
       :style="{ 'width': `${progress}%` }"
       aria-valuemax="100"
       aria-valuemin="0"
-      role="progressbar" />
+      role="progressbar"
+    />
   </component>
 </template>
 

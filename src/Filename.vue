@@ -1,7 +1,8 @@
 <template>
-  <renderless-file-name 
-    :id="id" 
-    :uploader="uploader">
+  <renderless-file-name
+    :id="id"
+    :uploader="uploader"
+   >
     <span slot-scope="{ filename }">{{ filename }}</span>
   </renderless-file-name>
 </template>

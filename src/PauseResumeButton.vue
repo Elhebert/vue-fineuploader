@@ -1,6 +1,8 @@
 <template>
   <renderless-pause-resume-button
-    v-bind="{id, uploader, allowPauseOnlyAfterFirstChunk}"
+    :id="id"
+    :uploader="uploader"
+    :allowPauseOnlyAfterFirstChunk="allowPauseOnlyAfterFirstChunk"
   >
     <button
       v-if="pausable || resumable || !onlyRenderIfEnabled"
