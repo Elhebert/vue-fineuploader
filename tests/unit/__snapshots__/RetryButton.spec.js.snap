@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RetryButton.vue disables retry button if upload has failed and retries are forbidden 1`] = `
+<button disabled="disabled" aria-label="retry">
+  Retry
+</button>
+`;
+
+exports[`RetryButton.vue disables retry button if upload has not failed 1`] = `
+<button disabled="disabled" aria-label="retry">
+  Retry
+</button>
+`;
+
+exports[`RetryButton.vue displays retry button if upload has failed 1`] = `
+<button aria-label="retry">
+  Retry
+</button>
+`;
+
+exports[`RetryButton.vue does not display retry button by default if upload has failed and retries are forbidden (custom response property) 1`] = ``;
+
+exports[`RetryButton.vue does not display retry button by default if upload has failed and retries are forbidden (default response property) 1`] = ``;
+
+exports[`RetryButton.vue does not display retry button by default if upload has not failed 1`] = ``;
+
+exports[`RetryButton.vue retries upload if button has been clicked 1`] = `
+<button aria-label="retry">
+  Retry
+</button>
+`;
