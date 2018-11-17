@@ -41,8 +41,8 @@ export default {
 
   render() {
     return this.$scopedSlots.default({
-      status: this.status
+      status: this.status,
     })
-  }
+  },
 }
 </script>

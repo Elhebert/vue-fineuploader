@@ -4,8 +4,8 @@
     :uploader="uploader"
   >
     <button
-      slot-scope="{ retryable, buttonEvents }"
       v-if="!onlyRenderIfRetryable || retryable"
+      slot-scope="{ retryable, buttonEvents }"
       :disabled="!retryable"
       aria-label="retry"
       v-on="buttonEvents"
@@ -19,6 +19,9 @@
 import RenderlessRetryButton from './renderless/RetryButton'
 
 export default {
+  components: {
+    RenderlessRetryButton,
+  },
   props: {
     id: {
       type: Number,
@@ -33,9 +36,5 @@ export default {
       required: true,
     },
   },
-
-  components: {
-    RenderlessRetryButton
-  }
 }
 </script>

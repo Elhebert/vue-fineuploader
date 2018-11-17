@@ -94,6 +94,6 @@ export default {
       },
       retryable: this.retryable,
     })
-  }
+  },
 }
 </script>

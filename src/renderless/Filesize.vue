@@ -21,15 +21,16 @@ export default {
   computed: {
     formatted() {
       let formatSizeAndUnits = {}
+      let size = this.size
 
       Object.values(DEFAULT_UNITS).some(unit => {
-        if (this.size >= 1e3) {
-          this.size = (this.size / 1e3).toFixed(2)
+        if (size >= 1e3) {
+          size = (size / 1e3).toFixed(2)
 
           return false
         }
 
-        formatSizeAndUnits = { size: this.size, unit }
+        formatSizeAndUnits = { size, unit }
         return true
       })
 

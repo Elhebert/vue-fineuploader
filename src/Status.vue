@@ -11,6 +11,9 @@
 import RenderlessStatus from './renderless/Status'
 
 export default {
+  components: {
+    RenderlessStatus,
+  },
   props: {
     id: {
       type: Number,
@@ -20,10 +23,6 @@ export default {
       type: Object,
       required: true,
     },
-  },
-
-  components: {
-    RenderlessStatus,
   },
 
   data: () => ({
@@ -37,7 +36,7 @@ export default {
       uploading: 'Uploading...',
       upload_failed: 'Failed',
       upload_successful: 'Completed',
-    }
-  })
+    },
+  }),
 }
 </script>
